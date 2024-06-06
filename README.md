@@ -8,7 +8,9 @@
   
 **Intro**
   
-This project is made so all the elements are displayed correctly on popular screen sizes. We recommend investing more time in completing this project, since it's more difficult than previous ones.  
+This is a Project that allows a user to create a profile and add pictures to that profile. They can add images, enter their name and give themselves a description. 
+
+This project is to learn how to accomadate different device screen sizes between 620 and 1280 pixels and that the elements are displayed correctly.   
   
 **Figma**  
   
