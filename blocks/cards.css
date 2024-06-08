@@ -56,5 +56,11 @@
     width: 21px;
     height: 18px;
     border: none;
+    transition: background-image 0.3s ease;
+}
+
+.card__like-button:hover {
+    transform: scale(1.5);
+    opacity: 0px;
 }
 

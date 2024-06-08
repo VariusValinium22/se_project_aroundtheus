@@ -18,7 +18,7 @@
     font-family: "Inter", Arial, sans-serif;
     grid-template-areas: 
         "title button"
-        "description description";
+        "description auto";
     grid-template-columns: minmax(auto, 382px) auto;
     align-items: center;
 }
@@ -42,6 +42,12 @@
     grid-area: button;
     margin-top: 15px;
     margin-left: 18px;
+    transition: transform 0.3s ease;
+}
+
+.profile__edit-button:hover {
+  transform: scale(1.5);
+  opacity: 0px;
 }
 
 .profile__description {
@@ -53,8 +59,7 @@
     padding-top: 16px;
     text-overflow: ellipsis;
     white-space: nowrap;
-    overflow: hidden;
-    max-width: 330px;
+    overflow: hidden;    
 }
 
 .profile__add-button {
@@ -67,6 +72,12 @@
     border-radius: 3px;
     transition: 0.3s ease;
     padding: 0;
+    transition: transform 0.3s ease;
+}
+
+.profile__add-button:hover {
+  transform: scale(1.5);
+  opacity: 0px;
 }
 
 
@@ -115,7 +126,6 @@
         align-items: center;
         font-size: 22px;
         line-height: 26.63px;
-        min-width: 250px;
         max-width: 100%; 
         text-align: left;
         }
