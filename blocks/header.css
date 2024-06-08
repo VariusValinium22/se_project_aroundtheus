@@ -1,6 +1,13 @@
 .header {
     margin-top: 45px;
-    height: 74px;
+    margin-bottom: 41px;
+}
+
+@media screen and (max-width: 644px) {
+    .header {
+        margin-top: 28px;
+        margin-bottom: 42px;
+    }
 }
 
 .header img {
