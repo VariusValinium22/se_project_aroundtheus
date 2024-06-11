@@ -1,25 +1,26 @@
 .page {
-    background-color: black;
-    color: white;
+  background-color: black;
+  color: white;
 }
 
 .page__section {
-    max-width: 880px;
-    width: 100%;
-    position: relative;
-    margin: 0 auto;
+  max-width: 880px;
+  width: 100%;
+  position: relative;
+  margin: 0 auto;
 }
 
 .page__content {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    padding-left: 19px;
-    padding-right: 19px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-left: 19px;
+  padding-right: 19px;
 }
 
 @media screen and (max-width: 644px) {
-    .page__section {
-        max-width: 282px;
-    }
+  .page__content {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
