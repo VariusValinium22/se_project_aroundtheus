@@ -23,3 +23,6 @@ This project is to learn how to accomadate different device screen sizes between
 
 This is the first iteration for review.
 https://1drv.ms/u/s!ArfmgfuwQ_SagbUTJCU5tPFqOWLBhQ?e=3mhwhN
+
+**Github Pages Link**
+https://variusvalinium22.github.io/se_project_aroundtheus/
