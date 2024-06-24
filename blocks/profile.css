@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   padding-top: 40px;
+  color: white;
 }
 
 .profile__image {
@@ -23,9 +24,9 @@
 }
 
 .profile__title {
+  font-weight: 500;
   font-size: 42px;
   line-height: 48px;
-  font-weight: 500;
   grid-area: title;
   margin: 0;
   text-overflow: ellipsis;
