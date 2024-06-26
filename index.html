@@ -38,11 +38,10 @@
             <button
               aria-label="Edit profile"
               class="profile__edit-button"
+              id="profile-edit-button"
               type="button"
             ></button>
-            <p class="profile__description">
-              Explorer Explorer
-            </p>
+            <p class="profile__description">Explorer Explorer</p>
           </div>
           <button
             aria-label="Create card"
@@ -150,14 +149,20 @@
       </footer>
     </div>
 
-    <div class="modal modal_opened">
+    <div class="modal" id="profile-edit-modal">
       <div class="modal__container">
-        <button aria-label= "close edit modal" class="modal__close"></button>
+        <button
+          aria-label="close edit modal"
+          class="modal__close"
+          id="profile-close-button"
+        ></button>
         <p class="modal__heading">Edit profile</p>
         <form class="modal__form">
-          <input type="text" name="Name" />
-          <input type="text" name="About me" />
-          <button aria-label="submit edit modal" class="modal__button">Save</button>
+          <input type="text" name="Name" placeholder="Name" />
+          <input type="text" name="About me" placeholder="Description" />
+          <button aria-label="submit edit modal" class="modal__button">
+            Save
+          </button>
         </form>
       </div>
     </div>
