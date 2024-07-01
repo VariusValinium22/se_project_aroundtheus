@@ -36,7 +36,7 @@ const profileDescription = document.querySelector(".profile__description");
 const profileTitleInput = document.querySelector("#profile-title-input");
 const profileDescriptionInput = document.querySelector("#profile-description-input");
 const profileEditForm = profileEditModal.querySelector(".modal__form");
-const cardListEl = document.querySelector('.card__list');
+const cardListEl = document.querySelector('.cards__list');
 const cardTemplate = document.querySelector("#card-template").content.firstElementChild;
 
 /*-------------------------------------------------------------------*/
@@ -47,10 +47,15 @@ function closePopup() {
     profileEditModal.classList.remove("modal_opened");
 }
 
-function getCardElement() {
-
+function getCardElement(cardData) {
+    const cardElement = cardTemplate.cloneNode(true);
+    const cardImageEl = cardElement.querySelector('.card__image');
+    const cardTitleEl = cardElement.querySelector('.card__title');
+    cardImageEl.src = cardData.link;
+    cardImageEl.alt = cardData.name;
+    cardTitleEl.textContent = cardData.name;
+    return cardElement;
 }
-
 /*-------------------------------------------------------------------*/
 /*                      Event Handlers                               */
 /*-------------------------------------------------------------------*/
@@ -63,7 +68,6 @@ function handleProfileEditSubmit(e) {
 /*-------------------------------------------------------------------*/
 /*                      Event Listeners                              */
 /*-------------------------------------------------------------------*/
-
 profileEditButton.addEventListener("click", () => {
     profileTitleInput.value = profileTitle.textContent;
     profileDescriptionInput.value = profileDescription.textContent;
@@ -75,45 +79,6 @@ profileEditCloseButton.addEventListener("click", closePopup);
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 
 initialCards.forEach((cardData) => {
-    //console.log(cardData); // give us the dats for the 6 cards in initialCards
-    //console.log(cardData.name);
-    //console.log(cardData.link);
-    //clone the template element with all its content and store it in a cardElement variable
-    const cardElement = cardTemplate.cloneNode(true);
-    //console.log(cardElement); //gives us 6 versions of the card template
-    //access the card title and image and store them in variables
-    const cardImageEl = cardElement.querySelector('.card__image');
-    const cardTitleEl = cardElement.querySelector('.card__title');
-
-    //set the path for the src to the image to the link field of the object
-   /*  cardImageEl.link = cardData.link; */
-
-    //set the image alt text to the name field of the object
-    cardImageEl.alt = cardData.name;
-    console.log(cardTitleEl.alt);
-
-    //set the card title to the name field of the object, too
-    /* cardTitleEl.textContent = cardData.name;
-    console.log(cardTitleEl.textContent); */
-    
-    //return the ready HTML element with the filled-in data
-    //return cardElement;
-    //cardListEl.append(cardElement);
+    const cardElement = getCardElement(cardData);
+    cardListEl.prepend(cardElement);
 });
-
-
-
-
-
-/* const profileCloseButton = document.querySelector("#profile-close-button");
- */
-
-/* for (let i = 0; i < initialCards.length; i++) {
-    console.log(initialCards[i]);
-}
-    
-initialCards.forEach((cardData) => {
-    console.log(cardData);
-});
- */
-
