@@ -50,96 +50,7 @@
         </section>
         <section class="cards page__section">
           <ul class="cards__list">
-            <li class="card">
-              <img
-                src="./images/yosemite.jpg"
-                class="card__image"
-                alt="Yosemite Valley picture"
-              />
-              <div class="card__description">
-                <h2 class="card__title">Yosemite Valley</h2>
-                <button
-                  aria-label="Like card"
-                  class="card__like-button"
-                  type="button"
-                ></button>
-              </div>
-            </li>
-            <li class="card">
-              <img
-                src="./images/lake-louise.jpg"
-                class="card__image"
-                alt="Lake Louise picture"
-              />
-              <div class="card__description">
-                <h2 class="card__title">Lake Louise</h2>
-                <button
-                  aria-label="Like card"
-                  class="card__like-button"
-                  type="button"
-                ></button>
-              </div>
-            </li>
-            <li class="card">
-              <img
-                src="./images/bald-mountains.jpg"
-                class="card__image"
-                alt="Bald Mountains picture"
-              />
-              <div class="card__description">
-                <h2 class="card__title">Bald Mountains</h2>
-                <button
-                  aria-label="Like card"
-                  class="card__like-button"
-                  type="button"
-                ></button>
-              </div>
-            </li>
-            <li class="card">
-              <img
-                src="./images/latemar.jpg"
-                class="card__image"
-                alt="Latemar picture"
-              />
-              <div class="card__description">
-                <h2 class="card__title">Latemar</h2>
-                <button
-                  aria-label="Like card"
-                  class="card__like-button"
-                  type="button"
-                ></button>
-              </div>
-            </li>
-            <li class="card">
-              <img
-                src="./images/vanoise.jpg"
-                class="card__image"
-                alt="Vanoise National Park picture"
-              />
-              <div class="card__description">
-                <h2 class="card__title">Vanoise National Park</h2>
-                <button
-                  aria-label="Like card"
-                  class="card__like-button"
-                  type="button"
-                ></button>
-              </div>
-            </li>
-            <li class="card">
-              <img
-                src="./images/lago.jpg"
-                class="card__image"
-                alt="Lago di Braises picture"
-              />
-              <div class="card__description">
-                <h2 class="card__title">Lago di Braies</h2>
-                <button
-                  aria-label="Like card"
-                  class="card__like-button"
-                  type="button"
-                ></button>
-              </div>
-            </li>
+            
           </ul>
         </section>
       </main>
@@ -156,8 +67,8 @@
           id="profile-close-button"
         ></button>
         <p class="modal__heading">Edit profile</p>
-        <form action="https://google.com/search" class="modal__form">
-          <input class="modal__input" name="q" id="profile-title-input" placeholder="Name"  type="text" />
+        <form class="modal__form">
+          <input class="modal__input" name="title" id="profile-title-input" placeholder="Name"  type="text" />
           <input class="modal__input" name="About me" id="profile-description-input" placeholder="Description"  type="text" />
           <button aria-label="submit edit modal" class="modal__button">
             Save
@@ -165,6 +76,16 @@
         </form>
       </div>
     </div>
+
+    <template id="card-template">
+      <li class="card">
+        <img class="card__image" src="" alt="" />
+        <div class="card__description">
+          <h2 class="card__title"></h2>
+          <button class="card__like-button"type="button"></button>
+        </div>
+      </li>
+    </template>
 
     <script src="scripts/index.js"></script>
   </body>
