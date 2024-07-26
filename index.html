@@ -9,7 +9,7 @@
       content="Learn about Figma, the use of downloading images."
     />
     <meta name="keywords" content="Figma" />
-    <title>Around the U.S.</title>
+    <title>Around the U.S. Project 5</title>
     <link rel="stylesheet" href="./pages/index.css" />
   </head>
 
@@ -35,7 +35,6 @@
               Cousteau
             </h1>
             <button
-              aria-label="Edit profile"
               class="profile__edit-button"
               id="profile-edit-button"
               type="button"
@@ -43,15 +42,13 @@
             <p class="profile__description">Explorer Explorer</p>
           </div>
           <button
-            aria-label="Create card"
             class="profile__add-button"
+            id="profile-add-button"
             type="button"
           ></button>
         </section>
         <section class="cards page__section">
-          <ul class="cards__list">
-            
-          </ul>
+          <ul class="cards__list"></ul>
         </section>
       </main>
       <footer class="footer page__section">
@@ -59,18 +56,62 @@
       </footer>
     </div>
 
-    <div class="modal" id="profile-edit-modal">
-      <div class="modal__container">
+    <!-- Edit Modal -->
+    <div class="modal" id="edit-modal">
+      <div class="modal__content">
         <button
-          aria-label="close edit modal"
           class="modal__close"
           id="profile-close-button"
+          type="button"
         ></button>
-        <p class="modal__heading">Edit profile</p>
-        <form class="modal__form">
-          <input class="modal__input" name="title" id="profile-title-input" placeholder="Name"  type="text" />
-          <input class="modal__input" name="About me" id="profile-description-input" placeholder="Description"  type="text" />
-          <button aria-label="submit edit modal" class="modal__button">
+        <p class="modal__title">Edit profile</p>
+        <form class="modal__form" id="edit-profile-form">
+          <input 
+            type="text"
+            name="name"
+            class="modal__input modal__input_type_name"
+            placeholder="Name"
+            id="profile-name-input" 
+          />
+          <input 
+            type="text"  
+            name="description"
+            class="modal__input modal__input_type_description" 
+            placeholder="Description" 
+            id="profile-description-input"           
+          />
+          <button type="submit" class="button modal__button">
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Add card modal -->
+    <div class="modal" id="add-card-modal">
+      <div class="modal__content">
+        <button
+          class="modal__close"
+          type="button"
+          id="close-button"
+        ></button>
+        <p class="modal__title">New Place</p>
+        <form class="modal__form" id="add-card-form">
+          <input 
+            class="modal__input modal__input_type_title"
+            type="text"
+            name="title"            
+            placeholder="Title"
+            id="title-input" 
+          />
+          <input 
+            class="modal__input modal__input_type_url" 
+            type="text"  
+            name="url"            
+            placeholder="Image URL" 
+            id="url-input"           
+          />
+          <button type="submit" class="button modal__button">
             Save
           </button>
         </form>
