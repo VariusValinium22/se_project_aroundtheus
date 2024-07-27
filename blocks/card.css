@@ -8,6 +8,7 @@
 
 .card__image-container {
   position: relative; /* Ensure the container is relative */
+}
 
 .card__image {
   width: 282px;
@@ -15,15 +16,15 @@
   position: relative;
 }
 
-
-
-
-#image-description {
-  text-align: center;
+.image-description {
   font-family: "Inter", sans-serif;
-  font-size: 16px;
-  color: red; 
+  font-weight: 400px;
+  font-size: 12px;
+/*   line-height: 3.2;
+ */  background-color: black;
+  color: white;
   margin: 0 auto;
+  padding-top: 10px;
 }
 
 .card__description {
