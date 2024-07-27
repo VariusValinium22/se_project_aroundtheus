@@ -6,15 +6,30 @@
   background-color: white;
 }
 
+.card__image-container {
+  position: relative; /* Ensure the container is relative */
+
 .card__image {
   width: 282px;
   height: 282px;
+  position: relative;
+}
+
+
+
+
+#image-description {
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  color: red; 
+  margin: 0 auto;
 }
 
 .card__description {
   display: flex;
-  background-color: white;
-  color: black;
+/*   background-color: white;
+ */  /* color: black; */
   padding: 25px 20px;
   align-items: center;
   justify-content: space-between;
@@ -44,10 +59,32 @@
 }
 
 .card__like-button_active {
-  background-image: url(../images/like-inactive.svg);
+  background-image: url(../images/like-active.png);
 }
 
 .card__like-button:hover {
+  opacity: 50%;
+  cursor: pointer;
+}
+
+.card__delete-button {
+  background: transparent url(../images/delete-active.svg) center no-repeat;
+  width: 21px;
+  height: 18px;
+  border: none;
+  transition: transform 0.3s ease, opacity 0.75s ease;
+  cursor: pointer;
+  flex-shrink: 0;
+  position: absolute;
+  top: 18px;
+  right: 15px;
+}
+
+.card__delete-button_active {
+  background-image: url(../images/delete-inactive.svg);
+}
+
+.card__delete-button:hover {
   opacity: 50%;
   cursor: pointer;
 }

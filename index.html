@@ -9,7 +9,7 @@
       content="Learn about Figma, the use of downloading images."
     />
     <meta name="keywords" content="Figma" />
-    <title>Around the U.S. Project 5</title>
+    <title>Around the U.S.</title>
     <link rel="stylesheet" href="./pages/index.css" />
   </head>
 
@@ -118,16 +118,36 @@
       </div>
     </div>
 
+    <!-- preview Image Modal -->
+    <div class="modal" id="preview-image-modal">
+      <div class="modal__content">
+        <button
+          class="modal__close"
+          type="button"
+          id="close-button"
+        ></button>
+        <img id="card__image" src="" alt="Image Preview" />
+        <p id="image-description"></p>
+      </div>
+    </div>
+
+
     <template id="card-template">
       <li class="card">
+        <div class="card__image-container">
         <img class="card__image" src="" alt="" />
-        <div class="card__description">
+        <button
+        class="card__delete-button"
+        type="button">
+      </button>
+      <div class="card__description">
           <h2 class="card__title"></h2>
           <button 
             class="card__like-button" 
             type="button">
           </button>
         </div>
+      </div>
       </li>
     </template>
 
