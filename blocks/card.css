@@ -7,30 +7,18 @@
 }
 
 .card__image-container {
-  position: relative; /* Ensure the container is relative */
+  position: relative;
 }
 
 .card__image {
   width: 282px;
   height: 282px;
-  position: relative;
-}
-
-.image-description {
-  font-family: "Inter", sans-serif;
-  font-weight: 400px;
-  font-size: 12px;
-/*   line-height: 3.2;
- */  background-color: black;
-  color: white;
-  margin: 0 auto;
-  padding-top: 10px;
 }
 
 .card__description {
   display: flex;
-/*   background-color: white;
- */  /* color: black; */
+  background-color: white;
+  color: black;
   padding: 25px 20px;
   align-items: center;
   justify-content: space-between;
@@ -88,4 +76,10 @@
 .card__delete-button:hover {
   opacity: 50%;
   cursor: pointer;
+}
+@media screen and (max-width: 640px) {
+  .card__image {
+  min-width: 240px;
+  min-height: 299px;
+  }
 }

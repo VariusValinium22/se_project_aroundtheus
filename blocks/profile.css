@@ -72,7 +72,7 @@
   border-radius: 2px;
   transition: 0.3s ease;
   padding: 0;
-  transition: transform 0.3s ease, opacity 0.75s ease;
+  transition: transform 0.3s, opacity 0.75s ease;
   cursor: pointer;
 }
 
@@ -116,13 +116,6 @@
     font-size: 22px;
     line-height: 26.63px;
     text-align: center;
-  }
-
-  .profile__edit-button {
-    width: 18px;
-    height: 18px;
-    padding: 0;
-    margin-left: 10px;
   }
 
   .profile__description {

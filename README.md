@@ -17,7 +17,10 @@ This project is to learn how to accomadate different device screen sizes between
 -Setting up font files specific to the font name(Inter) and font-weight
 -Text overflow management using ellipsis
 -Exporting Images from Figma
--Collecting information of CSS measurements from Figma 
+-Collecting information of CSS measurements from Figma
+-Set up Modal for Editing Profile information 
+-Set up Modal for Creating a New Card
+-Set up Modal for Previewing the Image of the Card
     
 **Videos**
 
