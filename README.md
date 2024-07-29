@@ -12,7 +12,7 @@ This is a Project that allows a user to create a custom profile and upload pictu
 This project is to learn how to accomadate different device screen sizes between 620 and 1280 pixels.
 -The usee of BEM/semantic tags
 -Grid view
--Flex view
+-Flex view   
 -Responsiveness/resizing of different device viewport sizes (@media queries)
 -Setting up font files specific to the font name(Inter) and font-weight
 -Text overflow management using ellipsis
