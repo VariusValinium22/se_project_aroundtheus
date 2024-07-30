@@ -24,14 +24,12 @@
 }
 
 .modal__content {
-  padding: 36px;
   background-color: #fff;
   position: relative;
   border-radius: 10px;
   box-sizing: border-box;
-  margin: 0 50px;
-  max-width: 430px;
-  width: 100%;
+  padding: 24px;
+  width: 430px;
 }
 
 .modal__content-preview {
@@ -117,8 +115,12 @@
 }
 
 @media screen and (max-width: 640px) {
-  .modal__container {
-    padding: 24px;
+  .modal {
+    max-width: 100%;
+  }
+
+  .modal__content {
+    max-width: 282px;
   }
   
   .modal__button {
@@ -136,10 +138,6 @@
   .modal__title {
     font-size: 18px;
     line-height: 22px;
-  }
-
-  .modal__container {
-    max-width: 90%;
   }
 
   .modal__close-moved {

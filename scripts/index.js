@@ -89,6 +89,7 @@ function handleProfileFormSubmit(e) {
     const link = cardUrlInput.value;
     renderCard({ name, link }, cardsWrap);
     closeModal(addCardModal);
+    e.target.reset();
   }
 
 function getCardElement(data) {
