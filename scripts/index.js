@@ -81,7 +81,7 @@ function handleProfileFormSubmit(e) {
   profileDescription.textContent = jobInput.value;
   closeModal(editProfileModal);
   e.target.reset();
-}
+}  
 
   function handleAddCardFormSubmit(e) {
     e.preventDefault();  
