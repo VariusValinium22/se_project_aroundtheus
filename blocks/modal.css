@@ -114,6 +114,29 @@
   margin: 0;
 }
 
+.modal__error {
+  font-size: 12px;
+  line-height: 15px;
+  color: #ff0000;
+  /* opacity: 0; */
+  /* visibility: hidden; */
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  /* margin-bottom: 20px; */
+  transition: opacity 0.3s; /*, visibility 0s 0.3s;*/
+}
+
+/* modal__input_type_error {
+  color: red;
+} */
+
+/* .modal__error_visible {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s, visibility 0s 0s;
+} */
+
 @media screen and (max-width: 640px) {
   .modal {
     max-width: 100%;

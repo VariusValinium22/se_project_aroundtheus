@@ -69,15 +69,24 @@
             class="modal__input modal__input_type_name"
             placeholder="Name"
             id="profile-name-input" 
+            minlength="2"
+            maxlength="40"
+            required            
           />
-          <input 
+          <span class="modal__error" id="profile-name-input-error"></span>
+          <input required
             type="text"  
             name="description"
             class="modal__input modal__input_type_description" 
             placeholder="Description" 
-            id="profile-description-input"           
+            id="profile-description-input"  
+            minlength="2"
+            maxlength="200"
+            required         
           />
-          <button type="submit" class="button modal__button">
+          <span class="modal__error" id="profile-description-input-error"></span>
+          <button type="submit" class="button modal__button modal__button_disabled" disabled 
+          >
             Save
           </button>
         </form>
@@ -93,21 +102,30 @@
         ></button>
         <p class="modal__title">New Place</p>
         <form class="modal__form" id="add-card-form">
-          <input 
+          <input required
             class="modal__input modal__input_type_title"
             type="text"
             name="title"            
             placeholder="Title"
-            id="title-input" 
+            id="title-input"
+            minlength="1"
+            maxlength="30"
+            required  
           />
-          <input 
+          <span class="modal__error" id="title-input-error"></span>
+          <input required
             class="modal__input modal__input_type_url" 
-            type="text"  
-            name="url"            
-            placeholder="Image URL" 
-            id="url-input"           
+            type="url"  
+            name="link"            
+            placeholder="Image link" 
+            id="url-input" 
+            minlength="1"
+            maxlength="30"
+            required          
           />
-          <button type="submit" class="button modal__button">
+          <span class="modal__error" id="url-input-error"></span>
+          <button type="submit" class="button modal__button modal__button_disabled" disabled 
+          >
             Save
           </button>
         </form>
@@ -146,5 +164,6 @@
     </template>
 
     <script src="scripts/index.js"></script>
+    <script src="scripts/validation.js"></script>
   </body>
 </html>
