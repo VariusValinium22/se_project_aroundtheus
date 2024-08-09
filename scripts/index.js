@@ -64,10 +64,31 @@ const addNewCardButton = document.querySelector(".profile__add-button");
 /*-------------------------------------------------------------------*/
 function openModal(modal) {
   modal.classList.add('modal_opened');
+  document.addEventListener('mousedown', handleModalMouseDown);
+  document.addEventListener('keydown', handleModalKeyDown);
 }
 
 function closeModal(modal) {
-  modal.classList.remove('modal_opened');
+  if (modal) {
+    modal.classList.remove('modal_opened');
+    document.removeEventListener('mousedown', handleModalMouseDown);
+    document.removeEventListener('keydown', handleModalKeyDown);
+  }
+}
+
+function handleModalMouseDown(e) {
+  const modalContent = e.target.closest('.modal__content');
+  if (!modalContent) { 
+    const openedModal = document.querySelector('.modal.modal_opened');
+    closeModal(openedModal);
+  }
+}
+
+function handleModalKeyDown(e) {
+  if (e.key === 'Escape') {
+    const openedModal = document.querySelector('.modal.modal_opened');
+    closeModal(openedModal); // close the currently opened modal
+  }
 }
 
 function renderCard(cardData, wrapper) {

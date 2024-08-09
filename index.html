@@ -63,6 +63,7 @@
         ></button>
         <p class="modal__title">Edit profile</p>
         <form class="modal__form" id="edit-profile-form">
+          <div class="modal__wrapper">
           <input 
             type="text"
             name="name"
@@ -73,8 +74,10 @@
             maxlength="40"
             required            
           />
-          <span class="modal__error" id="profile-name-input-error"></span>
-          <input required
+          <span class="modal__error" id="profile-name-input-error">Error Message Here</span>
+          </div>
+          <div class="modal__wrapper">
+          <input 
             type="text"  
             name="description"
             class="modal__input modal__input_type_description" 
@@ -85,6 +88,7 @@
             required         
           />
           <span class="modal__error" id="profile-description-input-error"></span>
+          </div>
           <button type="submit" class="button modal__button modal__button_disabled" disabled 
           >
             Save
@@ -102,7 +106,8 @@
         ></button>
         <p class="modal__title">New Place</p>
         <form class="modal__form" id="add-card-form">
-          <input required
+          <div class="modal__wrapper">
+          <input 
             class="modal__input modal__input_type_title"
             type="text"
             name="title"            
@@ -113,17 +118,18 @@
             required  
           />
           <span class="modal__error" id="title-input-error"></span>
-          <input required
+          </div>
+          <div class="modal__wrapper">
+          <input 
             class="modal__input modal__input_type_url" 
             type="url"  
             name="link"            
             placeholder="Image link" 
             id="url-input" 
-            minlength="1"
-            maxlength="30"
             required          
           />
           <span class="modal__error" id="url-input-error"></span>
+        </div>
           <button type="submit" class="button modal__button modal__button_disabled" disabled 
           >
             Save
