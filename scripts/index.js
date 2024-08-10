@@ -40,8 +40,10 @@ const editProfileModal = document.querySelector("#edit-modal");
 const addCardModal = document.querySelector("#add-card-modal");
 const previewImageModal = document.querySelector("#preview-image-modal");
 
-const profileFormElement = editProfileModal.querySelector(".modal__form");
-const addCardFormElement = addCardModal.querySelector(".modal__form");
+/* const profileFormElement = editProfileModal.querySelector(".modal__form"); */
+const profileFormElement = document.forms["edit-profile-form"];
+/* const addCardFormElement = addCardModal.querySelector(".modal__form"); */
+const addCardFormElement = document.forms["add-card-form"];
 
 const closeButtons = document.querySelectorAll('.modal__close');
 
@@ -79,7 +81,7 @@ function closeModal(modal) {
 function handleModalMouseDown(e) {
   const modalContent = e.target.closest('.modal__content');
   if (!modalContent) { 
-    const openedModal = document.querySelector('.modal.modal_opened');
+    const openedModal = e.target.closest('.modal.modal_opened');
     closeModal(openedModal);
   }
 }
