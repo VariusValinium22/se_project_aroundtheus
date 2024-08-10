@@ -21,6 +21,10 @@ This project is to learn how to accomadate different device screen sizes between
 -Set up Modal for Editing Profile information 
 -Set up Modal for Creating a New Card
 -Set up Modal for Previewing the Image of the Card
+-Added the enableValidation() function into validation.js file that enables 
+validation on the two Modals with Input Elements
+-Added the capability to use 'Esc' or clicking out of the Modals on the outlay in 
+order to close the modals.
     
 **Videos**
 
