@@ -33,7 +33,6 @@ const cardData = {
 }
 const card = new Card(cardData, "#card-template");
 card.getView()
-
 const cardTemplate = document
   .querySelector("#card-template")
   .content.querySelector(".card");
