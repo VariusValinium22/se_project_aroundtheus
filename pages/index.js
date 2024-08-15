@@ -27,11 +27,11 @@ const initialCards = [
   },
 ];
 
-const cardData = {
+const cardData2 = {
   name: "Lago di Braies",
   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
 }
-const card = new Card(cardData, "#card-template");
+const card = new Card(cardData2, "#card-template");
 card.getView()
 const cardTemplate = document
   .querySelector("#card-template")
@@ -137,13 +137,14 @@ function getCardElement(data) {
       imageDescription.textContent = modalImage.alt;
     });
 
-  deleteButton.addEventListener("click", () => {
+  /* deleteButton.addEventListener("click", () => {
     cardElement.remove();
-  });
+  }); */
 
   likeButton.addEventListener("click", () => {
     likeButton.classList.toggle('card__like-button_active');
   });
+
   cardImage.src = data.link;
   cardImage.alt = data.name;
   cardTitle.textContent = data.name;
