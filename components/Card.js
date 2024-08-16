@@ -35,8 +35,13 @@ export default class Card {
 
     getView() {
         this._cardElement = document.querySelector(this._cardSelector).content.querySelector(".card").cloneNode(true);
-        console.log(this._cardElement);
         // get the card view
+        const cardImage = this._cardElement.querySelector(".card__image");
+        cardImage.src = this._link;
+        cardImage.alt = this._name;
+        // set the title
+        const cardTitle = this._cardElement.querySelector(".card__title");
+        cardTitle.textContent = this._name;
         // seteventListeners
         this._setEventListeners();
         // return the card

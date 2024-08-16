@@ -27,18 +27,20 @@ const initialCards = [
   },
 ];
 
-const cardData2 = {
+const cardData = {
   name: "Lago di Braies",
   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
 }
-const card = new Card(cardData2, "#card-template");
-card.getView()
+const card = new Card(cardData, "#card-template");
+const cardElement = card.getView();
+/* card.getView()
 const cardTemplate = document
   .querySelector("#card-template")
   .content.querySelector(".card");
+ */
 
 const cardsWrap = document.querySelector(".cards__list");
-
+cardsWrap.append(cardElement);
 /*-------------------------------------------------------------------*/
 /*                         Elements                                  */
 /*-------------------------------------------------------------------*/
@@ -102,7 +104,9 @@ function handleModalKeyDown(e) {
 }
 
 function renderCard(cardData, wrapper) {
-  const cardElement = getCardElement(cardData);
+  const card = new Card(cardData, "#card-template");
+  /* const cardElement = getCardElement(cardData); */
+  const cardElement = card.getView();
   wrapper.prepend(cardElement);
 }
 
@@ -123,7 +127,7 @@ function handleProfileFormSubmit(e) {
     e.target.reset();
   }
 
-function getCardElement(data) {
+/* function getCardElement(data) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImage = cardElement.querySelector(".card__image");
   const cardTitle = cardElement.querySelector(".card__title");
@@ -137,20 +141,19 @@ function getCardElement(data) {
       imageDescription.textContent = modalImage.alt;
     });
 
-  /* deleteButton.addEventListener("click", () => {
+  deleteButton.addEventListener("click", () => {
     cardElement.remove();
-  }); */
+  });
 
   likeButton.addEventListener("click", () => {
     likeButton.classList.toggle('card__like-button_active');
   });
-
   cardImage.src = data.link;
   cardImage.alt = data.name;
   cardTitle.textContent = data.name;
 
   return cardElement;
-}
+} */
 
 
 
