@@ -33,6 +33,11 @@ const cardData = {
 }
 const card = new Card(cardData, "#card-template", console.log(handleImageClick));
 const cardElement = card.getView();
+/* card.getView()
+const cardTemplate = document
+  .querySelector("#card-template")
+  .content.querySelector(".card");
+ */
 
 const cardsWrap = document.querySelector(".cards__list");
 cardsWrap.append(cardElement);
@@ -122,11 +127,11 @@ function handleProfileFormSubmit(e) {
     e.target.reset();
   }
 
-  function handleImageClick(testing) {
-    console.log(testing._link);
-    this._modalImage.src = testing._link;
-    this._modalImage.alt = testing._name;
-    this._imageDescription.textContent = testing._name;
+  function handleImageClick() {
+    console.log(this._link);
+    this._modalImage.src = this._link;
+    this._modalImage.alt = this._name;
+    this._imageDescription.textContent = this._name;
     this._modalElement.classList.add('modal_opened');
 }
 /* function getCardElement(data) {
