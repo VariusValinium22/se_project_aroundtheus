@@ -31,13 +31,8 @@ const cardData = {
   name: "Lago di Braies",
   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
 }
-const card = new Card(cardData, "#card-template", console.log(handleImageClick));
+const card = new Card(cardData, "#card-template", handleImageClick, previewImageModal, modalImage, imageDescription);
 const cardElement = card.getView();
-/* card.getView()
-const cardTemplate = document
-  .querySelector("#card-template")
-  .content.querySelector(".card");
- */
 
 const cardsWrap = document.querySelector(".cards__list");
 cardsWrap.append(cardElement);
@@ -104,7 +99,7 @@ function handleModalKeyDown(e) {
 }
 
 function renderCard(cardData, wrapper) {
-  const card = new Card(cardData, "#card-template", previewImageModal,  modalImage, imageDescription);
+  const card = new Card(cardData, "#card-template", handleImageClick, previewImageModal, modalImage, imageDescription);
   /* const cardElement = getCardElement(cardData); */
   const cardElement = card.getView();
   wrapper.prepend(cardElement);
@@ -127,13 +122,14 @@ function handleProfileFormSubmit(e) {
     e.target.reset();
   }
 
-  function handleImageClick() {
-    console.log(this._link);
-    this._modalImage.src = this._link;
-    this._modalImage.alt = this._name;
-    this._imageDescription.textContent = this._name;
-    this._modalElement.classList.add('modal_opened');
+  function handleImageClick(cardData) {
+    console.log(cardData._link);
+    this._modalImage.src = cardData._link;
+    this._modalImage.alt = cardData._name;
+    this._imageDescription.textContent = cardData._name;
+    this._previewImageModal.classList.add('modal_opened');
 }
+
 /* function getCardElement(data) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImage = cardElement.querySelector(".card__image");

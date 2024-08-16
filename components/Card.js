@@ -1,10 +1,10 @@
 export default class Card {
-    constructor(data, cardSelector, handleImageClick, modalElement, modalImage, imageDescription) {
+    constructor(data, cardSelector, handleImageClick, previewImageModal, modalImage, imageDescription) {
         this._name = data.name;
         this._link = data.link;
         this._cardSelector = cardSelector;
         this._handleImageClick = handleImageClick;
-        this._modalElement = modalElement;
+        this._previewImageModal = previewImageModal;
         this._modalImage = modalImage;
         this._imageDescription = imageDescription;
     }
@@ -29,9 +29,9 @@ export default class Card {
             }
         });
 
-/*         this._cardElement.addEventListener('click', () => {
-            this._handleImageClick(this);
-        }); */
+        this._cardElement.querySelector(".card__image").addEventListener('click', () => {
+            this._handleImageClick({ link: this._link, name: this._link });
+        });
     }   
 
     _handleLikeIcon() {
