@@ -1,17 +1,15 @@
 export default class Card {
-    constructor({name, link}, cardSelector) {
-        console.log(name, link, cardSelector);
-        console.log(this);// this = the card object
-        this._name = name;
-        console.log(this);
-        this._link = link;
-        console.log(this);
+    constructor(data, cardSelector, handleImageClick, modalElement, modalImage, imageDescription) {
+        this._name = data.name;
+        this._link = data.link;
         this._cardSelector = cardSelector;
-        console.log(this);
+        this._handleImageClick = handleImageClick;
+        this._modalElement = modalElement;
+        this._modalImage = modalImage;
+        this._imageDescription = imageDescription;
     }
 
     _setEventListeners() {
-        console.log('setEventListener is working');
         //card__like-button
         this._cardElement.querySelector(".card__like-button").addEventListener("click", () => {
             this._handleLikeIcon();
@@ -21,10 +19,23 @@ export default class Card {
         this._cardElement.querySelector(".card__delete-button").addEventListener("click", () => {
             this._handleDeleteCard();
         });
+
+        //card image
+        this._cardElement.querySelector(".card__image").addEventListener("click", () => {
+            if (typeof this._handleImageClick === 'function') {
+                this._handleImageClick(this);
+            } else {
+                console.error("handleImageClick is NOT a function!",this._handleImageClick);
+            }
+        });
+
+/*         this._cardElement.addEventListener('click', () => {
+            this._handleImageClick(this);
+        }); */
     }   
 
     _handleLikeIcon() {
-        this._cardElement.querySelector(".card__like-button").classList.toggle("card__like-button_is-active");
+        this._cardElement.querySelector(".card__like-button").classList.toggle("card__like-button_active");
     }
 
     _handleDeleteCard() {
@@ -35,11 +46,10 @@ export default class Card {
 
     getView() {
         this._cardElement = document.querySelector(this._cardSelector).content.querySelector(".card").cloneNode(true);
-        // get the card view
+        // set the card image and title
         const cardImage = this._cardElement.querySelector(".card__image");
         cardImage.src = this._link;
         cardImage.alt = this._name;
-        // set the title
         const cardTitle = this._cardElement.querySelector(".card__title");
         cardTitle.textContent = this._name;
         // seteventListeners
@@ -48,18 +58,3 @@ export default class Card {
         return this._cardElement;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
