@@ -37,10 +37,14 @@ const config = {
   errorClass: "modal__error_visible"
 };
 
-const formElement = document.querySelector(config.formSelector);
-const formValidator = new FormValidator(config, formElement);
+const editForm = document.querySelector("#edit-profile-form");
+const addCardForm = document.querySelector("#add-card-form");
 
-formValidator.enableValidation();
+const editFormValidator = new FormValidator(config, editForm);
+editFormValidator.enableValidation();
+
+const addCardValidator = new FormValidator(config, addCardForm);
+addCardValidator.enableValidation();
 
 const cardData = {
   name: "Lago di Braies",
