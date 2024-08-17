@@ -21,14 +21,6 @@ export default class Card {
         });
 
         //card image
-        this._cardElement.querySelector(".card__image").addEventListener("click", () => {
-            if (typeof this._handleImageClick === 'function') {
-                this._handleImageClick(this);
-            } else {
-                console.error("handleImageClick is NOT a function!",this._handleImageClick);
-            }
-        });
-
         this._cardElement.querySelector(".card__image").addEventListener('click', () => {
             this._handleImageClick({ link: this._link, name: this._link });
         });

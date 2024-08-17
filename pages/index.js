@@ -31,7 +31,7 @@ const cardData = {
   name: "Lago di Braies",
   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
 }
-const card = new Card(cardData, "#card-template", handleImageClick, previewImageModal, modalImage, imageDescription);
+const card = new Card(cardData, "#card-template", handleImageClick);
 const cardElement = card.getView();
 
 const cardsWrap = document.querySelector(".cards__list");
@@ -99,7 +99,7 @@ function handleModalKeyDown(e) {
 }
 
 function renderCard(cardData, wrapper) {
-  const card = new Card(cardData, "#card-template", handleImageClick, previewImageModal, modalImage, imageDescription);
+  const card = new Card(cardData, "#card-template", handleImageClick);
   /* const cardElement = getCardElement(cardData); */
   const cardElement = card.getView();
   wrapper.prepend(cardElement);
@@ -123,11 +123,11 @@ function handleProfileFormSubmit(e) {
   }
 
   function handleImageClick(cardData) {
-    console.log(cardData._link);
-    this._modalImage.src = cardData._link;
-    this._modalImage.alt = cardData._name;
-    this._imageDescription.textContent = cardData._name;
-    this._previewImageModal.classList.add('modal_opened');
+    console.log(cardData.link);
+    modalImage.src = cardData.link;
+    modalImage.alt = cardData.name;
+    imageDescription.textContent = cardData.name;
+    previewImageModal.classList.add('modal_opened');
 }
 
 /* function getCardElement(data) {
