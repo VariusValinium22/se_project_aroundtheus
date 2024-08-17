@@ -82,9 +82,6 @@ const cardTitleInput = addCardFormElement.querySelector(".modal__input_type_titl
 const cardUrlInput = addCardFormElement.querySelector(".modal__input_type_url");
 const addNewCardButton = document.querySelector(".profile__add-button");
 
-
-
-
 /*-------------------------------------------------------------------*/
 /*                         Functions                                 */
 /*-------------------------------------------------------------------*/
@@ -130,6 +127,7 @@ function handleProfileFormSubmit(e) {
   profileDescription.textContent = jobInput.value;
   closeModal(editProfileModal);
   e.target.reset();
+  editFormValidator.resetValidation();
 }  
 
   function handleAddCardFormSubmit(e) {
@@ -139,6 +137,7 @@ function handleProfileFormSubmit(e) {
     renderCard({ name, link }, cardsWrap);
     closeModal(addCardModal);
     e.target.reset();
+    addCardValidator.resetValidation();
   }
 
   function handleImageClick(cardData) {
@@ -148,36 +147,6 @@ function handleProfileFormSubmit(e) {
     imageDescription.textContent = cardData.name;
     previewImageModal.classList.add('modal_opened');
 }
-
-/* function getCardElement(data) {
-  const cardElement = cardTemplate.cloneNode(true);
-  const cardImage = cardElement.querySelector(".card__image");
-  const cardTitle = cardElement.querySelector(".card__title");
-  const likeButton = cardElement.querySelector(".card__like-button");
-  const deleteButton = cardElement.querySelector(".card__delete-button");
-  
-    cardImage.addEventListener("click", () => {
-      openModal(previewImageModal);
-      modalImage.src = data.link;
-      modalImage.alt = data.name;
-      imageDescription.textContent = modalImage.alt;
-    });
-
-  deleteButton.addEventListener("click", () => {
-    cardElement.remove();
-  });
-
-  likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle('card__like-button_active');
-  });
-  cardImage.src = data.link;
-  cardImage.alt = data.name;
-  cardTitle.textContent = data.name;
-
-  return cardElement;
-} */
-
-
 
 /*-------------------------------------------------------------------*/
 /*                      Event Listeners                              */
