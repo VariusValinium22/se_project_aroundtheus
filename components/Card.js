@@ -22,7 +22,7 @@ export default class Card {
 
         //card image
         this._cardElement.querySelector(".card__image").addEventListener('click', () => {
-            this._handleImageClick({ link: this._link, name: this._link });
+            this._handleImageClick({ link: this._link, name: this._name });
         });
     }   
 
@@ -40,9 +40,9 @@ export default class Card {
         this._cardElement = document.querySelector(this._cardSelector).content.querySelector(".card").cloneNode(true);
         // set the card image and title
         const cardImage = this._cardElement.querySelector(".card__image");
+        const cardTitle = this._cardElement.querySelector(".card__title");
         cardImage.src = this._link;
         cardImage.alt = this._name;
-        const cardTitle = this._cardElement.querySelector(".card__title");
         cardTitle.textContent = this._name;
         // seteventListeners
         this._setEventListeners();

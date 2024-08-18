@@ -141,11 +141,11 @@ function handleProfileFormSubmit(e) {
   }
 
   function handleImageClick(cardData) {
-    console.log(cardData.link);
     modalImage.src = cardData.link;
     modalImage.alt = cardData.name;
     imageDescription.textContent = cardData.name;
-    previewImageModal.classList.add('modal_opened');
+    console.log(cardData.name)
+    openModal(previewImageModal);
 }
 
 /*-------------------------------------------------------------------*/
