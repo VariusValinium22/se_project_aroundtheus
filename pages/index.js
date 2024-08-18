@@ -110,8 +110,8 @@ function handleModalKeyDown(e) {
 }
 
 function createCard(item) {
-  // here is the code of creating
-  return cardElement.getView();
+  const card = new Card(item, "#card-template", handleImageClick);
+  return card.getView();
 }
 
 function renderCard(cardData, wrapper) {
@@ -125,6 +125,7 @@ function handleProfileFormSubmit(e) {
   profileDescription.textContent = jobInput.value;
   closeModal(editProfileModal);
   e.target.reset();
+  editFormValidator.resetValidation();
 }  
 
   function handleAddCardFormSubmit(e) {
@@ -134,7 +135,7 @@ function handleProfileFormSubmit(e) {
     renderCard({ name, link }, cardsWrap);
     closeModal(addCardModal);
     e.target.reset();
-    
+    addCardValidator.resetValidation();
   }
 
   function handleImageClick(cardData) {
