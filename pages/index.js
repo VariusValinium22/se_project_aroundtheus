@@ -37,13 +37,13 @@ const config = {
   errorClass: "modal__error_visible"
 };
 
-const editForm = document.querySelector("#edit-profile-form");
-const addCardForm = document.querySelector("#add-card-form");
+const profileFormElement = document.forms["edit-profile-form"];
+const addCardFormElement = document.forms["add-card-form"];
 
-const editFormValidator = new FormValidator(config, editForm);
+const editFormValidator = new FormValidator(config, profileFormElement);
 editFormValidator.enableValidation();
 
-const addCardValidator = new FormValidator(config, addCardForm);
+const addCardValidator = new FormValidator(config, addCardFormElement);
 addCardValidator.enableValidation();
 
 const cardData = {
@@ -63,11 +63,6 @@ const profileEditButton = document.querySelector(".profile__edit-button");
 const editProfileModal = document.querySelector("#edit-modal");
 const addCardModal = document.querySelector("#add-card-modal");
 const previewImageModal = document.querySelector("#preview-image-modal");
-
-/* const profileFormElement = editProfileModal.querySelector(".modal__form"); */
-const profileFormElement = document.forms["edit-profile-form"];
-/* const addCardFormElement = addCardModal.querySelector(".modal__form"); */
-const addCardFormElement = document.forms["add-card-form"];
 
 const closeButtons = document.querySelectorAll('.modal__close');
 
@@ -114,10 +109,13 @@ function handleModalKeyDown(e) {
   }
 }
 
+function createCard(item) {
+  // here is the code of creating
+  return cardElement.getView();
+}
+
 function renderCard(cardData, wrapper) {
-  const card = new Card(cardData, "#card-template", handleImageClick);
-  /* const cardElement = getCardElement(cardData); */
-  const cardElement = card.getView();
+  const cardElement = createCard(cardData);
   wrapper.prepend(cardElement);
 }
 
@@ -127,7 +125,6 @@ function handleProfileFormSubmit(e) {
   profileDescription.textContent = jobInput.value;
   closeModal(editProfileModal);
   e.target.reset();
-  editFormValidator.resetValidation();
 }  
 
   function handleAddCardFormSubmit(e) {
@@ -137,7 +134,7 @@ function handleProfileFormSubmit(e) {
     renderCard({ name, link }, cardsWrap);
     closeModal(addCardModal);
     e.target.reset();
-    addCardValidator.resetValidation();
+    
   }
 
   function handleImageClick(cardData) {
