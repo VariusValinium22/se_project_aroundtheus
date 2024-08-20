@@ -46,15 +46,7 @@ editFormValidator.enableValidation();
 const addCardValidator = new FormValidator(config, addCardFormElement);
 addCardValidator.enableValidation();
 
-const cardData = {
-  name: "Lago di Braies",
-  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
-}
-const card = new Card(cardData, "#card-template", handleImageClick);
-const cardElement = card.getView();
-
 const cardsWrap = document.querySelector(".cards__list");
-cardsWrap.append(cardElement);
 /*-------------------------------------------------------------------*/
 /*                         Elements                                  */
 /*-------------------------------------------------------------------*/
@@ -125,18 +117,18 @@ function handleProfileFormSubmit(e) {
   profileDescription.textContent = jobInput.value;
   closeModal(editProfileModal);
   e.target.reset();
-  editFormValidator.resetValidation();
 }  
 
-  function handleAddCardFormSubmit(e) {
-    e.preventDefault();  
-    const name = cardTitleInput.value;
-    const link = cardUrlInput.value;
-    renderCard({ name, link }, cardsWrap);
-    closeModal(addCardModal);
-    e.target.reset();
-    addCardValidator.resetValidation();
-  }
+function handleAddCardFormSubmit(e) {
+  e.preventDefault();  
+  const name = cardTitleInput.value;
+  const link = cardUrlInput.value;
+  renderCard({ name, link }, cardsWrap);
+  closeModal(addCardModal);
+  e.target.reset();
+  addCardValidator.resetValidation();
+addCardValidator.disableSubmitButton();
+}
 
   function handleImageClick(cardData) {
     modalImage.src = cardData.link;
@@ -154,6 +146,7 @@ profileFormElement.addEventListener("submit", handleProfileFormSubmit);
 addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
 
 profileEditButton.addEventListener("click", () => {
+  editFormValidator.resetValidation();
   nameInput.value = profileTitle.textContent;
   jobInput.value = profileDescription.textContent;
   openModal(editProfileModal);
@@ -166,6 +159,7 @@ closeButtons.forEach((button) => {
 
 addNewCardButton.addEventListener("click", () => openModal(addCardModal));
 initialCards.forEach((cardData) => renderCard(cardData, cardsWrap));
+
 
 
 

@@ -1,12 +1,10 @@
 export default class Card {
-    constructor(data, cardSelector, handleImageClick, previewImageModal, modalImage, imageDescription) {
+    constructor(data, cardSelector, handleImageClick) {
+        console.log(this);
         this._name = data.name;
         this._link = data.link;
         this._cardSelector = cardSelector;
         this._handleImageClick = handleImageClick;
-        this._previewImageModal = previewImageModal;
-        this._modalImage = modalImage;
-        this._imageDescription = imageDescription;
     }
 
     _setEventListeners() {
