@@ -10,7 +10,6 @@ export default class FormValidator {
         this._toggleButtonState();
         this._inputList.forEach((inputElement) => {
             inputElement.addEventListener('input', () => {
-                console.log(this._checkInputValidity(inputElement));
                 this._toggleButtonState();
             });
         });
@@ -71,4 +70,12 @@ export default class FormValidator {
         return this._inputList.some((inputElement) => !inputElement.validity.valid);
     }
 }
+
+
+
+
+
+
+
+
 

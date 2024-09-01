@@ -134,7 +134,6 @@ addCardValidator.disableSubmitButton();
     modalImage.src = cardData.link;
     modalImage.alt = cardData.name;
     imageDescription.textContent = cardData.name;
-    console.log(cardData.name)
     openModal(previewImageModal);
 }
 

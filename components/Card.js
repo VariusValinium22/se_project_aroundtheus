@@ -1,6 +1,5 @@
 export default class Card {
     constructor(data, cardSelector, handleImageClick) {
-        console.log(this);
         this._name = data.name;
         this._link = data.link;
         this._cardSelector = cardSelector;
@@ -29,7 +28,6 @@ export default class Card {
     }
 
     _handleDeleteCard() {
-        console.log(this._cardElement);
         this._cardElement.remove();
         this._cardElement = null;
     }
@@ -48,3 +46,9 @@ export default class Card {
         return this._cardElement;
     }
 }
+
+
+
+
+
+
