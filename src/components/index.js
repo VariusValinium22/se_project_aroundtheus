@@ -1,3 +1,6 @@
+import UserInfo from "./UserInfo.js";
+import PopupWithImage from "./PopupWithImage";
+import PopupWithForm from "./PopupWithForm.js";
 import Section from "./Section.js";
 import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
@@ -161,6 +164,19 @@ closeButtons.forEach((button) => {
 addNewCardButton.addEventListener("click", () => openModal(addCardModal));
 initialCards.forEach((cardData) => renderCard(cardData, cardsWrap));
 
+const handleFormSubmit = (formData) => {
+  console.log(formData);
+};
 
+const newCardPopup = new PopupWithForm('#add-card-modal', handleFormSubmit);
+console.log(newCardPopup);
+newCardPopup.setEventListeners();
 
+const imagePopup = new PopupWithImage(imageLink, imageName);
+imagePopup.setEventListeners()
+
+const userInfo = new UserInfo({
+  profileName: ".profile__title",
+  jobElement: ".profile__description"
+});
 
