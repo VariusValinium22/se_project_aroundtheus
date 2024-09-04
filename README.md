@@ -25,6 +25,8 @@ This project is to learn how to accomadate different device screen sizes between
 validation on the two Modals with Input Elements
 -Added the capability to use 'Esc' or clicking out of the Modals on the outlay in 
 order to close the modals.
+-Created classes to introduce OOP into the project
+-Setup Webpack/Babel to ensure the use of new Javascript technology can be used and transformed for older browsers to recognize.
     
 **Videos**
 

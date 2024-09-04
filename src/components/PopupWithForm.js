@@ -9,7 +9,7 @@ class PopupWithForm extends Popup {
     }
 
     _getInputValues() {
-        const inputList = this.popupForm.querySelectorAll('.modal__input');
+        const inputList = this._popupForm.querySelectorAll('.modal__input');
         const formValues = {};
 
         inputList.forEach((input) => {
@@ -23,7 +23,7 @@ class PopupWithForm extends Popup {
 
         this._popupForm.addEventListener('submit', (evt) => {
             evt.preventDefault();
-        this._handleFormSumbit(this._getInputValues());
+        this._handleFormSubmit(this._getInputValues());
         });
     }
 
