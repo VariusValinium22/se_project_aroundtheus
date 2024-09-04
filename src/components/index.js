@@ -172,7 +172,7 @@ const newCardPopup = new PopupWithForm('#add-card-modal', handleFormSubmit);
 console.log(newCardPopup);
 newCardPopup.setEventListeners();
 
-const imagePopup = new PopupWithImage(imageLink, imageName);
+const imagePopup = new PopupWithImage({popupSelector: "#preview-image-modal"});
 imagePopup.setEventListeners()
 
 const userInfo = new UserInfo({
@@ -180,3 +180,12 @@ const userInfo = new UserInfo({
   jobElement: ".profile__description"
 });
 
+const cardList = new Section(
+  {
+    items: initialCards,
+    renderer: (data) => {
+      cardList.addItem(createCard(data));
+    },
+  },
+  ".cards__list"
+);
