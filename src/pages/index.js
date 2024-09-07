@@ -82,7 +82,7 @@ profileEditButton.addEventListener("click", () => {
     const currentUserInfo = userInfo.getUserInfo();
     nameInput.value = currentUserInfo.title;
     jobInput.value = currentUserInfo.description;
-    addCardValidator.resetValidation();
+    editFormValidator.resetValidation();
   }
   profilePopup.open();
 });
