@@ -78,12 +78,12 @@ const profilePopup = new PopupWithForm("#edit-modal", (formData) => {
 profilePopup.setEventListeners();
 
 profileEditButton.addEventListener("click", () => {
-  if (!nameInput.value && !jobInput.value) {
+  
     const currentUserInfo = userInfo.getUserInfo();
     nameInput.value = currentUserInfo.title;
     jobInput.value = currentUserInfo.description;
     editFormValidator.resetValidation();
-  }
+  
   profilePopup.open();
 });
 
@@ -96,3 +96,7 @@ const userInfo = new UserInfo({
   profileName: ".profile__title",
   jobElement: ".profile__description",
 });
+
+
+
+
