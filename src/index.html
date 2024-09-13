@@ -9,6 +9,8 @@
       content="Learn about Figma, the use of downloading images."
     />
     <meta name="keywords" content="Figma" />
+    <!-- <link rel="icon" href="favicon.ico" type="image/x-icon" /> -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <title>Around the U.S.</title>
   </head>
 
@@ -56,39 +58,42 @@
     <!-- Edit Modal -->
     <div class="modal" id="edit-modal">
       <div class="modal__content">
-        <button
-          class="modal__close"          
-          type="button"
-        ></button>
+        <button class="modal__close" type="button"></button>
         <p class="modal__title">Edit profile</p>
         <form class="modal__form" id="edit-profile-form">
           <div class="modal__wrapper">
-          <input 
-            type="text"
-            name="name"
-            class="modal__input modal__input_type_name"
-            placeholder="Name"
-            id="profile-name-input" 
-            minlength="2"
-            maxlength="40"
-            required            
-          />
-          <span class="modal__error" id="profile-name-input-error"></span>
+            <input
+              type="text"
+              name="name"
+              class="modal__input modal__input_type_name"
+              placeholder="Name"
+              id="profile-name-input"
+              minlength="2"
+              maxlength="40"
+              required
+            />
+            <span class="modal__error" id="profile-name-input-error"></span>
           </div>
           <div class="modal__wrapper">
-          <input 
-            type="text"  
-            name="description"
-            class="modal__input modal__input_type_description" 
-            placeholder="Description" 
-            id="profile-description-input"  
-            minlength="2"
-            maxlength="200"
-            required         
-          />
-          <span class="modal__error" id="profile-description-input-error"></span>
+            <input
+              type="text"
+              name="description"
+              class="modal__input modal__input_type_description"
+              placeholder="Description"
+              id="profile-description-input"
+              minlength="2"
+              maxlength="200"
+              required
+            />
+            <span
+              class="modal__error"
+              id="profile-description-input-error"
+            ></span>
           </div>
-          <button type="submit" class="button modal__button modal__button_disabled" disabled 
+          <button
+            type="submit"
+            class="button modal__button modal__button_disabled"
+            disabled
           >
             Save
           </button>
@@ -99,37 +104,37 @@
     <!-- Add card modal -->
     <div class="modal" id="add-card-modal">
       <div class="modal__content">
-        <button
-          class="modal__close"
-          type="button"          
-        ></button>
+        <button class="modal__close" type="button"></button>
         <p class="modal__title">New Place</p>
         <form class="modal__form" id="add-card-form">
           <div class="modal__wrapper">
-          <input 
-            class="modal__input modal__input_type_title"
-            type="text"
-            name="title"            
-            placeholder="Title"
-            id="title-input"
-            minlength="1"
-            maxlength="30"
-            required  
-          />
-          <span class="modal__error" id="title-input-error"></span>
+            <input
+              class="modal__input modal__input_type_title"
+              type="text"
+              name="title"
+              placeholder="Title"
+              id="title-input"
+              minlength="1"
+              maxlength="30"
+              required
+            />
+            <span class="modal__error" id="title-input-error"></span>
           </div>
           <div class="modal__wrapper">
-          <input 
-            class="modal__input modal__input_type_url" 
-            type="url"  
-            name="link"            
-            placeholder="Image link" 
-            id="url-input" 
-            required          
-          />
-          <span class="modal__error" id="url-input-error"></span>
-        </div>
-          <button type="submit" class="button modal__button modal__button_disabled" disabled 
+            <input
+              class="modal__input modal__input_type_url"
+              type="url"
+              name="link"
+              placeholder="Image link"
+              id="url-input"
+              required
+            />
+            <span class="modal__error" id="url-input-error"></span>
+          </div>
+          <button
+            type="submit"
+            class="button modal__button modal__button_disabled"
+            disabled
           >
             Save
           </button>
@@ -137,13 +142,10 @@
       </div>
     </div>
 
-<!--preview Image Modal -->
+    <!--preview Image Modal -->
     <div class="modal" id="preview-image-modal">
       <div class="modal__content modal__content-preview">
-        <button
-          class="modal__close modal__close-moved"
-          type="button"          
-        ></button>
+        <button class="modal__close modal__close-moved" type="button"></button>
         <img class="modal__image" src="" alt="" />
         <p class="modal__description"></p>
       </div>
@@ -152,23 +154,14 @@
     <template id="card-template">
       <li class="card">
         <div class="card__image-container">
-        <img class="card__image" src="" alt="" />
-        <button
-        class="card__delete-button"
-        type="button">
-      </button>
-      <div class="card__description">
-          <h2 class="card__title"></h2>
-          <button 
-            class="card__like-button" 
-            type="button">
-          </button>
+          <img class="card__image" src="" alt="" />
+          <button class="card__delete-button" type="button"></button>
+          <div class="card__description">
+            <h2 class="card__title"></h2>
+            <button class="card__like-button" type="button"></button>
+          </div>
         </div>
-      </div>
       </li>
     </template>
-    </body>
+  </body>
 </html>
-
-
-
