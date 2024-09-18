@@ -27,6 +27,7 @@ validation on the two Modals with Input Elements
 order to close the modals.
 -Created classes to introduce OOP into the project
 -Setup Webpack/Babel to ensure the use of new Javascript technology can be used and transformed for older browsers to recognize.
+-Learned to push daily
     
 **Videos**
 
