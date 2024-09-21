@@ -38,13 +38,14 @@ export default class Api {
     })
       .then((res) => res.json())
       .then((result) => {
+        console.log(result);
         alert("Success getting the Initial Cards!");
         return result;
       })
       .then((cardInfo) => {})
       .catch((err) => {
         alert("Unexpected Error, please try again!", err);
-      })
+      }) 
       .finally(() => {
         alert("Ok, we are done with gathering InitialCards!");
       });
