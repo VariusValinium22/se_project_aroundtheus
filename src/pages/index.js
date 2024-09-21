@@ -1,3 +1,4 @@
+import Api from "../components/Api.js";
 import {
   config,
   profileFormElement,
@@ -95,6 +96,18 @@ imagePopup.setEventListeners();
 const userInfo = new UserInfo({
   profileName: ".profile__title",
   jobElement: ".profile__description",
+});
+
+profileFormElement.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const name = nameInput.value;
+  const job = jobInput.value;
+
+  Api.updateProfile(name, job).then(() => {
+    userInfo.setUserInfo({ title: name, description: job });
+    profilePopup.close();
+  });
 });
 
 
