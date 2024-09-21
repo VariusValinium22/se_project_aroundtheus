@@ -1,11 +1,10 @@
-import Api from "../components/Api.js";
+import { api } from "../components/Api.js";
 import {
   config,
   profileFormElement,
   addCardFormElement,
   profileEditButton,
   addNewCardButton,
-  initialCards,
   cardsWrap,
   nameInput,
   jobInput,
@@ -37,7 +36,6 @@ function createCard(item) {
 
 const cardList = new Section(
   {
-    data: initialCards,
     renderer: (data) => {
       cardList.addItem(createCard(data));
     },
@@ -45,7 +43,15 @@ const cardList = new Section(
   ".cards__list"
 );
 
-cardList.renderItems();
+api.getInitialCards()
+  .then((cards) => {
+    console.log(cards)
+    cardList.renderItems(cards);
+  })
+  .catch((err) => {
+    console.error("Error fetching initial cards:", err);
+  });
+  
 
 function handleImageClick(cardData) {
   imagePopup.open(cardData);
@@ -98,17 +104,17 @@ const userInfo = new UserInfo({
   jobElement: ".profile__description",
 });
 
-profileFormElement.addEventListener("submit", (event) => {
+/* profileFormElement.addEventListener("submit", (event) => {
   event.preventDefault();
 
   const name = nameInput.value;
   const job = jobInput.value;
 
-  Api.updateProfile(name, job).then(() => {
+  api.updateProfile(name, job).then(() => {
     userInfo.setUserInfo({ title: name, description: job });
     profilePopup.close();
   });
-});
+}); */
 
 
 

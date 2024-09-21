@@ -51,7 +51,7 @@ export default class Api {
       });
   }
 
-  updateProfile(name, about) {
+/*   updateProfile(name, about) {
     return fetch(`${this.baseUrl}/users/me`, {
       method: "PATCH",
       headers: {
@@ -71,7 +71,7 @@ export default class Api {
       .catch((err) => {
         console.error("Error updating the profile:", err);
       });
-  }
+  } */
 }
 
 // Initialize the Api class
@@ -82,4 +82,3 @@ const api = new Api("https://around-api.en.tripleten-services.com/v1", {
 export { api };
 
 api.getUserInfo();
-api.getInitialCards();
