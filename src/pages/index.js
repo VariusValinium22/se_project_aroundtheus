@@ -104,18 +104,6 @@ const userInfo = new UserInfo({
   jobElement: ".profile__description",
 });
 
-/* profileFormElement.addEventListener("submit", (event) => {
-  event.preventDefault();
-
-  const name = nameInput.value;
-  const job = jobInput.value;
-
-  api.updateProfile(name, job).then(() => {
-    userInfo.setUserInfo({ title: name, description: job });
-    profilePopup.close();
-  });
-}); */
-
 
 
 
