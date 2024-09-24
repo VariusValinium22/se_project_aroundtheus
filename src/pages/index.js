@@ -4,20 +4,26 @@ import {
   profileFormElement,
   addCardFormElement,
   profileEditButton,
+  avatarEditButton,
   addNewCardButton,
   cardsWrap,
   nameInput,
   jobInput,
   modalImage,
   imageDescription,
+  avatarFormElement,
 } from "../utils/constants.js";
 import UserInfo from "../components/UserInfo.js";
+import avatarInfo from "../components/AvatarInfo.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import Section from "../components/Section.js";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import "../pages/index.css";
+
+const editAvatarValidator = new FormValidator(config, avatarFormElement);
+editAvatarValidator.enableValidation();
 
 const editFormValidator = new FormValidator(config, profileFormElement);
 editFormValidator.enableValidation();
@@ -74,18 +80,28 @@ addNewCardButton.addEventListener("click", () => {
   newCardPopup.open();
 });
 
-const profilePopup = new PopupWithForm("#edit-modal", (formData) => {
+
+//======================
+//=== Edit Profile =====
+//======================
+const profilePopup = new PopupWithForm("#edit-profile-modal", (formData) => {
   const name = formData["name"];
   const job = formData["description"];
-
+  // use api interaction
   userInfo.setUserInfo({ title: name, description: job });
   profilePopup.close();
 });
 
+const userInfo = new UserInfo({
+  nameSelector: ".profile__title",
+  jobSelector: ".profile__description",
+  avatarSelector: ".avatar__image"
+})
+
 profilePopup.setEventListeners();
 
 profileEditButton.addEventListener("click", () => {
-  
+    profilePopup.open();
     const currentUserInfo = userInfo.getUserInfo();
     nameInput.value = currentUserInfo.title;
     jobInput.value = currentUserInfo.description;
@@ -94,16 +110,28 @@ profileEditButton.addEventListener("click", () => {
   profilePopup.open();
 });
 
+//=======================
+//=== Avatar Popup ======
+//=======================
+const avatarPopup = new PopupWithForm("#edit-avatar-modal", (formData) => {
+  console.log(formData)
+  api.updateAvatar();
+  userInfo.setUserAvatar(formData);
+})
+
+avatarPopup.setEventListeners();
+
+avatarEditButton.addEventListener("click", () => {
+  avatarPopup.open();
+  
+})
+
+//======================
+//=== image Popup ======
+//======================
 const imagePopup = new PopupWithImage({
   popupSelector: "#preview-image-modal",
 });
 imagePopup.setEventListeners();
-
-const userInfo = new UserInfo({
-  profileName: ".profile__title",
-  jobElement: ".profile__description",
-});
-
-
 
 

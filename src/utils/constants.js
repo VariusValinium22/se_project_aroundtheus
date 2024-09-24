@@ -2,15 +2,13 @@ export const cardsWrap = document.querySelector(".cards__list");
 /*-------------------------------------------------------------------*/
 /*                         Elements                                  */
 /*-------------------------------------------------------------------*/
-export const profileEditButton = document.querySelector(
-  ".profile__edit-button"
-);
-
-export const editProfileModal = document.querySelector("#edit-modal");
+export const editProfileModal = document.querySelector("#edit-profile-modal");
 export const addCardModal = document.querySelector("#add-card-modal");
 export const previewImageModal = document.querySelector("#preview-image-modal");
+
 export const profileFormElement = document.querySelector("#edit-profile-form");
 export const addCardFormElement = document.querySelector("#add-card-modal");
+export const avatarFormElement = document.querySelector("#edit-avatar-modal");
 
 export const closeButtons = document.querySelectorAll(".modal__close");
 
@@ -30,6 +28,13 @@ export const nameInput = profileFormElement.querySelector(
 export const jobInput = profileFormElement.querySelector(
   ".modal__input_type_description"
 );
+export const profileEditButton = document.querySelector(
+  ".profile__edit-button"
+);
+export const avatarEditButton = document.querySelector(
+  ".avatar__edit-button"
+);
+
 export const cardTitleInput = addCardFormElement.querySelector(
   ".modal__input_type_title"
 );
@@ -41,7 +46,6 @@ export const addNewCardButton = document.querySelector(".profile__add-button");
 export const handleFormSubmit = (formData) => {
   console.log(formData);
 };
-
 
 export const config = {
   formSelector: ".modal__form",
