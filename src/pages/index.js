@@ -3,6 +3,8 @@ import {
   config,
   profileFormElement,
   addCardFormElement,
+  profileTitle,
+  profileDescription,
   profileEditButton,
   avatarEditButton,
   addNewCardButton,
@@ -54,8 +56,6 @@ api
   .getInitialCards()
   .then((cards) => {
     cardList.renderItems(cards);
-    console.log(
-      "cards data rendered to the page:", cards.length, cards);
   })
   .catch((error) => {
     console.error("Error fetching initial cards:", error);
@@ -96,19 +96,25 @@ api
 //=== Edit Profile Popup ====
 //===========================
 const profilePopup = new PopupWithForm("#edit-profile-modal", (formData) => {
-  console.log("Profile Popup:", formData)
   const name = formData["name"];
   const job = formData["description"];
   api
     .updateProfile(name, job)
     .then((updatedData) => {
-      console.log('profile updated', updatedData)
-      userInfo.setUserInfo({ title: updatedData.name, description: updatedData.job });
+      if (updatedData) {
+        profileTitle.textContent = updatedData.name;
+        profileDescription.textContent = updatedData.about;
+        userInfo.setUserInfo({
+          name: updatedData.name,
+          about: updatedData.about,
+        });
+      } else {
+        console.error("Unexpected API response structure:", updatedData);
+      }
     })
     .catch((error) => {
       console.error("info not updated", error);
     });
-
   profilePopup.close();
 });
 
@@ -134,14 +140,12 @@ profileEditButton.addEventListener("click", () => {
 //=== Edit Avatar Popup ======
 //============================
 const avatarPopup = new PopupWithForm("#edit-avatar-modal", (formData) => {
-  console.log("Avatar Popup", formData);
   const avatarUrl = formData.avatar;
 
   if (!avatarUrl) {
     console.error("URL missing");
     return;
   }
-  // use api interaction
   api
     .updateAvatar(avatarUrl)
     .then((avatarData) => {

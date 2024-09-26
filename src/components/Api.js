@@ -1,11 +1,3 @@
-import {
-  profileDescription,
-  avatarImage,
-  profileTitle,
-  profileFormElement,
-  avatarFormElement,
-} from "../utils/constants";
-
 export default class Api {
   constructor(baseUrl, headers) {
     this.baseUrl = baseUrl;
@@ -20,7 +12,7 @@ export default class Api {
       .then(this._handleRequest)
       .then((result) => {
         return result;
-      })
+      });
   }
   _handleRequest(res) {
     return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
@@ -33,9 +25,8 @@ export default class Api {
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log("fetched initial cards", result);
         return result;
-      })
+      });
   }
 
   //PATCH-EDIT the profile information (UPDATE)
@@ -51,38 +42,36 @@ export default class Api {
         about: about,
       }),
     })
-    .then((response) => {
-      if (!response.ok) {
-        return Promise.reject(`Error: ${response.status}`);
-      }
-      return response.json();
-     }); 
-/*       .then((response) => response.json())
-      .then((updatedData) => {
-        profileTitle.textContent = updatedData.name;
-        profileDescription.textContent = updatedData.about;
-      }); */
+      .then((response) => {
+        if (!response.ok) {
+          return Promise.reject(`Error: ${response.status}`);
+        }
+        return response.json().then((jsonData) => {
+          return jsonData;
+        });
+      })
+      .catch((error) => {
+        throw error;
+      });
   }
 
-  //update(PATCH) the avatar in profile
+  //PATCH-EDIT the avatar in profile (UPDATE)
   updateAvatar(avatarUrl) {
-    console.log(avatarUrl)
     return fetch(`${this.baseUrl}/users/me/avatar`, {
       method: "PATCH",
-      headers: { 
+      headers: {
         ...this.headers,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
         avatar: avatarUrl,
       }),
-    })
-    .then((response) => {
-      if (!response.ok) { // not 200/300
+    }).then((response) => {
+      if (!response.ok) {
         return Promise.reject(`Error: ${response.status}`);
       }
-      return response.json(); // is 200/300
-    })
+      return response.json();
+    });
   }
 }
 
@@ -94,20 +83,3 @@ const api = new Api("https://around-api.en.tripleten-services.com/v1", {
 export { api };
 
 api.getUserInfo();
-
-/* profileFormElement.addEventListener("submit", function (event) {
-  event.preventDefault();
-  const name = event.target.name.value;
-  const description = event.target.description.value;
-
-
-  .then((profileData) => {
-      document.querySelector("#profile-name-input").textContent =
-        profileData.name;
-      document.querySelector("#profile-description-input").textContent =
-        profileData.about;
-    })
-    .catch((err) => {
-      console.error(err);
-    });
-}); */
