@@ -16,7 +16,7 @@ export const profileTitle = document.querySelector(".profile__title");
 export const profileDescription = document.querySelector(
   ".profile__description"
 );
-export const profileImage = document.querySelector(".profile__image");
+export const avatarImage = document.querySelector(".avatar__image");
 export const modalImage = previewImageModal.querySelector(".modal__image");
 export const imageDescription = previewImageModal.querySelector(
   ".modal__description"

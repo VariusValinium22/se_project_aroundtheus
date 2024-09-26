@@ -1,8 +1,9 @@
 import {
   profileDescription,
-  profileImage,
+  avatarImage,
   profileTitle,
   profileFormElement,
+  avatarFormElement,
 } from "../utils/constants";
 
 export default class Api {
@@ -11,53 +12,33 @@ export default class Api {
     this.headers = headers;
   }
 
-  _handleRequest(res) {
-    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-  }
-
-  // fetch(GET) the user's info and img
+  // GET-LOAD the user's info and img from the server
   getUserInfo() {
     return fetch(`${this.baseUrl}/users/me`, {
       headers: this.headers,
     })
       .then(this._handleRequest)
       .then((result) => {
-        console.log("Success getting the user info!");
         return result;
       })
-      .then((userInfo) => {
-        profileTitle.textContent = userInfo.name;
-        profileDescription.textContent = userInfo.about;
-        profileImage.src = userInfo.avatar;
-      })
-      .catch((err) => {
-        console.error("Error fetching the user's info:", err);
-      })
-      .finally(() => {
-        console.log("Ok, we are done with gathering userInfo!");
-      });
+  }
+  _handleRequest(res) {
+    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
   }
 
-  //fetch(GET) the initial card
+  //GET-LOAD the initial card from the server
   getInitialCards() {
     return fetch(`${this.baseUrl}/cards`, {
       headers: this.headers,
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
-        console.log("Success getting the Initial Cards!");
+        console.log("fetched initial cards", result);
         return result;
       })
-      .catch((err) => {
-        console.error("Unexpected Error, please try again!");
-      })
-      .finally(() => {
-        console.log("Ok, we are done with gathering InitialCards!");
-      });
   }
 
-  //update(PATCH) the profile information
+  //PATCH-EDIT the profile information (UPDATE)
   updateProfile(name, about) {
     return fetch(`${this.baseUrl}/users/me`, {
       method: "PATCH",
@@ -70,31 +51,38 @@ export default class Api {
         about: about,
       }),
     })
-      .then((res) => res.json())
-      .then((updatedData) => {
-        profileTitle.textContent = updatedData.name;
-        profileDescription.textContent = updatedData.about;
-      })
-      .catch((err) => {
-        console.error("Error updating the profile:", err);
-      });
-  }
-  
-  //update(PATCH) the profile image
-  updateAvatar(avatarUrl) {
-    return fetch(`${this.baseUrl}/users/me/avatar`, {
-      method: "PATCH",
-      headers: this.headers,
-      body: JSON.stringify({
-        avatar: avatarUrl
-      })
-    })
-    .then (response => {
+    .then((response) => {
       if (!response.ok) {
         return Promise.reject(`Error: ${response.status}`);
       }
       return response.json();
-    });
+     }); 
+/*       .then((response) => response.json())
+      .then((updatedData) => {
+        profileTitle.textContent = updatedData.name;
+        profileDescription.textContent = updatedData.about;
+      }); */
+  }
+
+  //update(PATCH) the avatar in profile
+  updateAvatar(avatarUrl) {
+    console.log(avatarUrl)
+    return fetch(`${this.baseUrl}/users/me/avatar`, {
+      method: "PATCH",
+      headers: { 
+        ...this.headers,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        avatar: avatarUrl,
+      }),
+    })
+    .then((response) => {
+      if (!response.ok) { // not 200/300
+        return Promise.reject(`Error: ${response.status}`);
+      }
+      return response.json(); // is 200/300
+    })
   }
 }
 
@@ -107,23 +95,19 @@ export { api };
 
 api.getUserInfo();
 
-profileFormElement.addEventListener('submit', function(event) {
+/* profileFormElement.addEventListener("submit", function (event) {
   event.preventDefault();
   const name = event.target.name.value;
-  const description = event.target.description;
-  const avatarUrl = event.target.avatar.value;
+  const description = event.target.description.value;
 
-  Promise.all([
-    api.updateProfile(name, description),
-    api.updateAvatar(avatarUrl)
-  ])
-  .then(([profileData, avatarData]) => {
-    document.querySelector('#profile-name-input').textContent = profileData.name;
-    document.querySelector('#profile-description-input').textContent = profileData.about;
-    document.querySelector('#profile-avatar-input').src = avatarData.avatar;
-  })
-  .catch(err => {
-    console.error(err);
-  });
-});
 
+  .then((profileData) => {
+      document.querySelector("#profile-name-input").textContent =
+        profileData.name;
+      document.querySelector("#profile-description-input").textContent =
+        profileData.about;
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+}); */
