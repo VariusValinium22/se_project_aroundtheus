@@ -3,30 +3,32 @@ export default class Api {
     this.baseUrl = baseUrl;
     this.headers = headers;
   }
+  // post request to add card on the server through createCard()
+  addNewCard(cardData) {
+    return fetch(`${this.baseUrl}/cards`, {
+      method: "POST",
+      headers: {
+        ...this.headers,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(cardData),
+    })
+    .then(response => response.json())
+    .then(this._handleRequests);
+  }
 
   // GET-LOAD the user's info and img from the server
   getUserInfo() {
     return fetch(`${this.baseUrl}/users/me`, {
       headers: this.headers,
-    })
-      .then(this._handleRequest)
-      .then((result) => {
-        return result;
-      });
-  }
-  _handleRequest(res) {
-    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+    }).then(this._handleRequest);
   }
 
   //GET-LOAD the initial card from the server
   getInitialCards() {
     return fetch(`${this.baseUrl}/cards`, {
       headers: this.headers,
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        return result;
-      });
+    }).then(this._handleRequest);
   }
 
   //PATCH-EDIT the profile information (UPDATE)
@@ -41,18 +43,7 @@ export default class Api {
         name: name,
         about: about,
       }),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          return Promise.reject(`Error: ${response.status}`);
-        }
-        return response.json().then((jsonData) => {
-          return jsonData;
-        });
-      })
-      .catch((error) => {
-        throw error;
-      });
+    }).then(this._handleRequest);
   }
 
   //PATCH-EDIT the avatar in profile (UPDATE)
@@ -66,12 +57,18 @@ export default class Api {
       body: JSON.stringify({
         avatar: avatarUrl,
       }),
-    }).then((response) => {
-      if (!response.ok) {
-        return Promise.reject(`Error: ${response.status}`);
-      }
-      return response.json();
-    });
+    }).then(this._handleRequest);
+  }
+
+  //DELETE the card
+/*   deleteCard(cardId) {
+    return fetch(`${this.baseUrl}cards/${cardId}`, {
+      headers: this.headers,
+    }).then(this._handleRequest);
+  } */
+
+  _handleRequest(res) {
+    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
   }
 }
 

@@ -3,7 +3,7 @@ export const cardsWrap = document.querySelector(".cards__list");
 /*                         Elements                                  */
 /*-------------------------------------------------------------------*/
 export const editProfileModal = document.querySelector("#edit-profile-modal");
-export const addCardModal = document.querySelector("#add-card-modal");
+export const deleteCardModal = document.querySelector("#delete-card-modal");
 export const previewImageModal = document.querySelector("#preview-image-modal");
 
 export const profileFormElement = document.querySelector("#edit-profile-form");
@@ -35,12 +35,6 @@ export const avatarEditButton = document.querySelector(
   ".avatar__edit-button"
 );
 
-export const cardTitleInput = addCardFormElement.querySelector(
-  ".modal__input_type_title"
-);
-export const cardUrlInput = addCardFormElement.querySelector(
-  ".modal__input_type_url"
-);
 export const addNewCardButton = document.querySelector(".profile__add-button");
 
 export const handleFormSubmit = (formData) => {

@@ -8,11 +8,8 @@ import {
   profileEditButton,
   avatarEditButton,
   addNewCardButton,
-  cardsWrap,
   nameInput,
   jobInput,
-  modalImage,
-  imageDescription,
   avatarFormElement,
 } from "../utils/constants.js";
 import UserInfo from "../components/UserInfo.js";
@@ -68,8 +65,18 @@ function handleImageClick(cardData) {
 //=======================================
 const newCardPopup = new PopupWithForm("#add-card-modal", (formData) => {
   const cardData = { name: formData["title"], link: formData["link"] };
-
-  cardList.addItem(createCard(cardData));
+  api
+    .addNewCard(cardData)
+    .then((createdCard) => {
+      console.log('Created Card from server:', createdCard);
+      console.log( createdCard.name, createdCard.link)
+      cardList.addItem(createCard(createdCard));
+      newCardPopup.close();
+    })
+    .catch((error) => {
+      console.error("Error adding new card: ", error);
+    });
+  //add _id to the card when put into the server somehow
   addCardValidator.disableSubmitButton();
 });
 
@@ -101,21 +108,15 @@ const profilePopup = new PopupWithForm("#edit-profile-modal", (formData) => {
   api
     .updateProfile(name, job)
     .then((updatedData) => {
-      if (updatedData) {
-        profileTitle.textContent = updatedData.name;
-        profileDescription.textContent = updatedData.about;
-        userInfo.setUserInfo({
-          name: updatedData.name,
-          about: updatedData.about,
-        });
-      } else {
-        console.error("Unexpected API response structure:", updatedData);
-      }
+      userInfo.setUserInfo({
+        name: updatedData.name,
+        about: updatedData.about,
+      });
+      profilePopup.close();
     })
     .catch((error) => {
       console.error("info not updated", error);
     });
-  profilePopup.close();
 });
 
 const userInfo = new UserInfo({
@@ -169,3 +170,15 @@ const imagePopup = new PopupWithImage({
   popupSelector: "#preview-image-modal",
 });
 imagePopup.setEventListeners();
+
+//=========================
+//=== delete card Popup ===
+//=========================
+/* const deleteCardPopup = new PopupWithForm("#delete-card-modal", (formData) => {
+   const cardData = { name: formData[], link: fornData["link"] };
+ 
+  cardList.deleteItem()
+}) */
+
+/* _handleDeleteCard() in Card.js */
+/* Make a diffeerent class for delete */

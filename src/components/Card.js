@@ -2,8 +2,11 @@ export default class Card {
   constructor(data, cardSelector, handleImageClick) {
     this._name = data.name;
     this._link = data.link;
+    this._id = data._id;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
+    /* this._handleDeleteClick = handleDeleteClick; */
+    // put handleDeleteClick in constructor
   }
 
   _setEventListeners() {
@@ -19,6 +22,7 @@ export default class Card {
       .querySelector(".card__delete-button")
       .addEventListener("click", () => {
         this._handleDeleteCard();
+        /* this._handleDeleteClick(); */
       });
 
     //card image
@@ -51,9 +55,7 @@ export default class Card {
     cardImage.src = this._link;
     cardImage.alt = this._name;
     cardTitle.textContent = this._name;
-    // seteventListeners
     this._setEventListeners();
-    // return the card
     return this._cardElement;
   }
 }
