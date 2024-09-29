@@ -187,22 +187,22 @@
     </div>
 
     <!--delete a card-->
-<!--     <div class="modal" id="delete-card-modal"></div>
-      <div class="modal__content">
+    <div class="modal" id="delete-card-modal">
+      <div class="modal__content modal__content_type_delete">
         <button class="modal__close" type="button"></button>
         <p class="modal__title">Are you sure?</p>
         <form class="modal__form" id="delete-card-form">
           <button
             type="submit"
-            class="button modal__button modal__button_disabled"
-            disabled
+            class="button modal__button modal__button_type_delete"
           >
             Yes
           </button>
         </form>
       </div>
-    </div> -->
+    </div>
 
+    <!--card-template-->
     <template id="card-template">
       <li class="card">
         <div class="card__image-container">
@@ -215,6 +215,5 @@
         </div>
       </li>
     </template>
-
   </body>
 </html>

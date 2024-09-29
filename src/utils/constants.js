@@ -31,11 +31,10 @@ export const jobInput = profileFormElement.querySelector(
 export const profileEditButton = document.querySelector(
   ".profile__edit-button"
 );
-export const avatarEditButton = document.querySelector(
-  ".avatar__edit-button"
-);
+export const avatarEditButton = document.querySelector(".avatar__edit-button");
 
 export const addNewCardButton = document.querySelector(".profile__add-button");
+export const cardDeleteButton = document.querySelector(".card__delete-button");
 
 export const handleFormSubmit = (formData) => {
   console.log(formData);

@@ -3,7 +3,7 @@ export default class Api {
     this.baseUrl = baseUrl;
     this.headers = headers;
   }
-  // post request to add card on the server through createCard()
+  // POST-ADD a newCard name/link on to the server through createCard()
   addNewCard(cardData) {
     return fetch(`${this.baseUrl}/cards`, {
       method: "POST",
@@ -13,8 +13,8 @@ export default class Api {
       },
       body: JSON.stringify(cardData),
     })
-    .then(response => response.json())
-    .then(this._handleRequests);
+      .then((response) => response.json())
+      .then(this._handleRequests);
   }
 
   // GET-LOAD the user's info and img from the server
@@ -61,11 +61,28 @@ export default class Api {
   }
 
   //DELETE the card
-/*   deleteCard(cardId) {
-    return fetch(`${this.baseUrl}cards/${cardId}`, {
+  deleteCard(cardId) {
+    return fetch(`${this.baseUrl}/cards/${cardId}`, {
+      method: "DELETE",
       headers: this.headers,
     }).then(this._handleRequest);
-  } */
+  }
+
+  // PUT a like to a card
+  addLike(cardId) {
+    return fetch(`${this.baseUrl}/cards/${cardId}/likes`, {
+      method: "PUT",
+      headers: this.headers,
+    }).then(this._handleRequest);
+  }
+
+  // DELETE a like from a card
+  removeLike(cardId) {
+    return fetch(`${this.baseUrl}/cards/${cardId}/likes`, {
+      method: "DELETE",
+      headers: this.headers,
+    }).then(this._handleRequest);
+  }
 
   _handleRequest(res) {
     return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);

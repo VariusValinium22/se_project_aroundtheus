@@ -1,12 +1,13 @@
 export default class Card {
-  constructor(data, cardSelector, handleImageClick) {
+  constructor(data, cardSelector, handleImageClick, handleDeleteClick, handleLikeClick) {
     this._name = data.name;
     this._link = data.link;
     this._id = data._id;
+    this._isLiked = data.isLiked;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
-    /* this._handleDeleteClick = handleDeleteClick; */
-    // put handleDeleteClick in constructor
+    this._handleDeleteClick = handleDeleteClick;
+    this._handleLikeClick = handleLikeClick;
   }
 
   _setEventListeners() {
@@ -14,15 +15,15 @@ export default class Card {
     this._cardElement
       .querySelector(".card__like-button")
       .addEventListener("click", () => {
-        this._handleLikeIcon();
+        this._handleLikeClick(this);
+        // this._handleLikeIcon();
       });
 
     //card__delete-button
     this._cardElement
       .querySelector(".card__delete-button")
       .addEventListener("click", () => {
-        this._handleDeleteCard();
-        /* this._handleDeleteClick(); */
+        this._handleDeleteClick(this);
       });
 
     //card image
@@ -33,15 +34,17 @@ export default class Card {
       });
   }
 
+  handleDeleteCard() {
+    this._cardElement.remove();
+    this._cardElement = null;
+  }
+
   _handleLikeIcon() {
+    this._isLiked = !this._isLiked;
+    console.log("Card Name: ", this._name, "Like Button: ", this._isLiked);
     this._cardElement
       .querySelector(".card__like-button")
       .classList.toggle("card__like-button_active");
-  }
-
-  _handleDeleteCard() {
-    this._cardElement.remove();
-    this._cardElement = null;
   }
 
   getView() {
@@ -55,6 +58,12 @@ export default class Card {
     cardImage.src = this._link;
     cardImage.alt = this._name;
     cardTitle.textContent = this._name;
+    
+    const likeButton = this._cardElement.querySelector(".card__like-button");
+    if (this._isLiked) {
+      likeButton.classList.add("card_like-button_active");
+    }
+
     this._setEventListeners();
     return this._cardElement;
   }

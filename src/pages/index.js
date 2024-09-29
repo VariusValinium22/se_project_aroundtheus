@@ -15,6 +15,7 @@ import {
 import UserInfo from "../components/UserInfo.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithDelete from "../components/PopupWithDelete.js";
 import Section from "../components/Section.js";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
@@ -34,7 +35,13 @@ addCardValidator.enableValidation();
 /*-------------------------------------------------------------------*/
 
 function createCard(item) {
-  const card = new Card(item, "#card-template", handleImageClick);
+  const card = new Card(
+    item,
+    "#card-template",
+    handleImageClick,
+    handleDeleteClick,
+    handleLikeClick
+  );
   return card.getView();
 }
 
@@ -52,6 +59,7 @@ const cardList = new Section(
 api
   .getInitialCards()
   .then((cards) => {
+    console.log("Fetched Cards Data: ", cards);
     cardList.renderItems(cards);
   })
   .catch((error) => {
@@ -62,21 +70,22 @@ function handleImageClick(cardData) {
   imagePopup.open(cardData);
 }
 
-//=======================================
+//================================================================
+//=== POST a newCard on to the server using CreateCard() above ===
+//================================================================
 const newCardPopup = new PopupWithForm("#add-card-modal", (formData) => {
   const cardData = { name: formData["title"], link: formData["link"] };
+  newCardPopup.setButtonText(true);
   api
     .addNewCard(cardData)
     .then((createdCard) => {
-      console.log('Created Card from server:', createdCard);
-      console.log( createdCard.name, createdCard.link)
       cardList.addItem(createCard(createdCard));
       newCardPopup.close();
     })
     .catch((error) => {
       console.error("Error adding new card: ", error);
-    });
-  //add _id to the card when put into the server somehow
+    })
+    .finally(() => newCardPopup.setButtonText());
   addCardValidator.disableSubmitButton();
 });
 
@@ -105,6 +114,7 @@ api
 const profilePopup = new PopupWithForm("#edit-profile-modal", (formData) => {
   const name = formData["name"];
   const job = formData["description"];
+  profilePopup.setButtonText(true);
   api
     .updateProfile(name, job)
     .then((updatedData) => {
@@ -116,6 +126,9 @@ const profilePopup = new PopupWithForm("#edit-profile-modal", (formData) => {
     })
     .catch((error) => {
       console.error("info not updated", error);
+    })
+    .finally(() => {
+      profilePopup.setButtonText();
     });
 });
 
@@ -147,6 +160,7 @@ const avatarPopup = new PopupWithForm("#edit-avatar-modal", (formData) => {
     console.error("URL missing");
     return;
   }
+  avatarPopup.setButtonText(true);
   api
     .updateAvatar(avatarUrl)
     .then((avatarData) => {
@@ -154,6 +168,9 @@ const avatarPopup = new PopupWithForm("#edit-avatar-modal", (formData) => {
     })
     .catch((err) => {
       console.error(err);
+    })
+    .finally(() => {
+      avatarPopup.setButtonText();
     });
 });
 
@@ -174,11 +191,52 @@ imagePopup.setEventListeners();
 //=========================
 //=== delete card Popup ===
 //=========================
-/* const deleteCardPopup = new PopupWithForm("#delete-card-modal", (formData) => {
-   const cardData = { name: formData[], link: fornData["link"] };
- 
-  cardList.deleteItem()
-}) */
+const deleteCardPopup = new PopupWithDelete({
+  popupSelector: "#delete-card-modal",
+});
 
-/* _handleDeleteCard() in Card.js */
-/* Make a diffeerent class for delete */
+deleteCardPopup.setEventListeners();
+
+function handleDeleteClick(card) {
+  deleteCardPopup.open();
+
+  deleteCardPopup.setSubmitAction(() => {
+    deleteCardPopup.setButtonText(true);
+    api
+      .deleteCard(card._id)
+      .then(() => {
+        card.handleDeleteCard();
+        deleteCardPopup.close();
+      })
+      .catch((error) => {
+        console.error("Error deleting card: ", error);
+      })
+      .finally(() => {
+        deleteCardPopup.setButtonText();
+      });
+  });
+}
+
+function handleLikeClick(card) {
+  // if card isLiked
+  if (card._isLiked) {
+    api
+      .removeLike(card._id)
+      .then(() => {
+        card._handleLikeIcon();
+      })
+      .catch((error) => {
+        console.log("Error removing like: ", error);
+      });
+    // else like card => api.addLike
+  } else {
+    api
+      .addLike(card._id)
+      .then(() => {
+        card._handleLikeIcon();
+      })
+      .catch((error) => {
+        console.error("Error adding like: ", error);
+      });
+  }
+}
