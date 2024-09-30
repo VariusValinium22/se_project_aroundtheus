@@ -3,30 +3,10 @@ export default class Api {
     this.baseUrl = baseUrl;
     this.headers = headers;
   }
-  // POST-ADD a newCard name/link on to the server through createCard()
-  addNewCard(cardData) {
-    return fetch(`${this.baseUrl}/cards`, {
-      method: "POST",
-      headers: {
-        ...this.headers,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(cardData),
-    })
-      .then((response) => response.json())
-      .then(this._handleRequests);
-  }
 
   // GET-LOAD the user's info and img from the server
   getUserInfo() {
     return fetch(`${this.baseUrl}/users/me`, {
-      headers: this.headers,
-    }).then(this._handleRequest);
-  }
-
-  //GET-LOAD the initial card from the server
-  getInitialCards() {
-    return fetch(`${this.baseUrl}/cards`, {
       headers: this.headers,
     }).then(this._handleRequest);
   }
@@ -58,6 +38,27 @@ export default class Api {
         avatar: avatarUrl,
       }),
     }).then(this._handleRequest);
+  }
+
+  //GET-LOAD the initial card from the server
+  getInitialCards() {
+    return fetch(`${this.baseUrl}/cards`, {
+      headers: this.headers,
+    }).then(this._handleRequest);
+  }
+
+  // POST-ADD a newCard name/link on to the server through createCard()
+  addNewCard(cardData) {
+    return fetch(`${this.baseUrl}/cards`, {
+      method: "POST",
+      headers: {
+        ...this.headers,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(cardData),
+    })
+      .then((response) => response.json())
+      .then(this._handleRequests);
   }
 
   //DELETE the card

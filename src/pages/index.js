@@ -217,8 +217,11 @@ function handleDeleteClick(card) {
   });
 }
 
+//==================================
+//=== removeLike/addLike to card ===
+//==================================
 function handleLikeClick(card) {
-  // if card isLiked
+  // if card isLiked removeLike
   if (card._isLiked) {
     api
       .removeLike(card._id)
@@ -228,7 +231,7 @@ function handleLikeClick(card) {
       .catch((error) => {
         console.log("Error removing like: ", error);
       });
-    // else like card => api.addLike
+    // else addLike to card
   } else {
     api
       .addLike(card._id)
