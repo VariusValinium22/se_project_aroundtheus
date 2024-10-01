@@ -20,7 +20,6 @@ export default class FormValidator {
     });
     this._formElement.addEventListener("submit", (event) => {
       event.preventDefault();
-      this._toggleButtonState();
     });
   }
 

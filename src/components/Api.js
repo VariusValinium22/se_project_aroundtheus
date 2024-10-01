@@ -1,5 +1,5 @@
 export default class Api {
-  constructor(baseUrl, headers) {
+  constructor({ baseUrl, headers }) {
     this.baseUrl = baseUrl;
     this.headers = headers;
   }
@@ -15,10 +15,7 @@ export default class Api {
   updateProfile(name, about) {
     return fetch(`${this.baseUrl}/users/me`, {
       method: "PATCH",
-      headers: {
-        ...this.headers,
-        "Content-Type": "application/json",
-      },
+      headers: this.headers,
       body: JSON.stringify({
         name: name,
         about: about,
@@ -30,10 +27,7 @@ export default class Api {
   updateAvatar(avatarUrl) {
     return fetch(`${this.baseUrl}/users/me/avatar`, {
       method: "PATCH",
-      headers: {
-        ...this.headers,
-        "Content-Type": "application/json",
-      },
+      headers: this.headers,
       body: JSON.stringify({
         avatar: avatarUrl,
       }),
@@ -51,10 +45,7 @@ export default class Api {
   addNewCard(cardData) {
     return fetch(`${this.baseUrl}/cards`, {
       method: "POST",
-      headers: {
-        ...this.headers,
-        "Content-Type": "application/json",
-      },
+      headers: this.headers,
       body: JSON.stringify(cardData),
     })
       .then((response) => response.json())
@@ -91,10 +82,12 @@ export default class Api {
 }
 
 // Initialize the Api class
-const api = new Api("https://around-api.en.tripleten-services.com/v1", {
-  authorization: "25fa860b-0207-4525-82fb-69fc255d22d5",
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "25fa860b-0207-4525-82fb-69fc255d22d5",
+    "Content-Type": "application/json",
+  },
 });
 
 export { api };
-
-api.getUserInfo();

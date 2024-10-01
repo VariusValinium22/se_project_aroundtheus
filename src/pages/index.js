@@ -42,6 +42,7 @@ function createCard(item) {
     handleDeleteClick,
     handleLikeClick
   );
+
   return card.getView();
 }
 
@@ -59,7 +60,6 @@ const cardList = new Section(
 api
   .getInitialCards()
   .then((cards) => {
-    console.log("Fetched Cards Data: ", cards);
     cardList.renderItems(cards);
   })
   .catch((error) => {
@@ -80,13 +80,15 @@ const newCardPopup = new PopupWithForm("#add-card-modal", (formData) => {
     .addNewCard(cardData)
     .then((createdCard) => {
       cardList.addItem(createCard(createdCard));
+      addCardValidator.disableSubmitButton();
       newCardPopup.close();
     })
     .catch((error) => {
       console.error("Error adding new card: ", error);
     })
-    .finally(() => newCardPopup.setButtonText());
-  addCardValidator.disableSubmitButton();
+    .finally(() => {
+      newCardPopup.setButtonText();
+    });
 });
 
 newCardPopup.setEventListeners();
@@ -122,6 +124,7 @@ const profilePopup = new PopupWithForm("#edit-profile-modal", (formData) => {
         name: updatedData.name,
         about: updatedData.about,
       });
+      addCardValidator.disableSubmitButton();
       profilePopup.close();
     })
     .catch((error) => {
@@ -146,8 +149,6 @@ profileEditButton.addEventListener("click", () => {
   nameInput.value = currentUserInfo.title;
   jobInput.value = currentUserInfo.description;
   editFormValidator.resetValidation();
-
-  profilePopup.open();
 });
 
 //============================
@@ -165,6 +166,8 @@ const avatarPopup = new PopupWithForm("#edit-avatar-modal", (formData) => {
     .updateAvatar(avatarUrl)
     .then((avatarData) => {
       userInfo.setUserAvatar(avatarData);
+      addCardValidator.disableSubmitButton();
+      avatarPopup.close();
     })
     .catch((err) => {
       console.error(err);
@@ -222,21 +225,21 @@ function handleDeleteClick(card) {
 //==================================
 function handleLikeClick(card) {
   // if card isLiked removeLike
-  if (card._isLiked) {
+  if (card.isLiked) {
     api
       .removeLike(card._id)
       .then(() => {
-        card._handleLikeIcon();
+        card.handleLikeIcon();
       })
       .catch((error) => {
-        console.log("Error removing like: ", error);
+        console.error("Error removing like: ", error);
       });
     // else addLike to card
   } else {
     api
       .addLike(card._id)
       .then(() => {
-        card._handleLikeIcon();
+        card.handleLikeIcon();
       })
       .catch((error) => {
         console.error("Error adding like: ", error);
