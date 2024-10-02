@@ -4,7 +4,7 @@ export default class Card {
     cardSelector,
     handleImageClick,
     handleDeleteClick,
-    handleLikeClick
+    handleLikeClick,
   ) {
     this._name = data.name;
     this._link = data.link;
@@ -49,8 +49,7 @@ export default class Card {
     this._isLiked = !this._isLiked;
     console.log("Card Name: ", this._name, "Like Button: ", this._isLiked);
 
-    this._cardElement
-      .querySelector(".card__like-button")
+    this._likeButton
       .classList.toggle("card__like-button_active");
   }
 
@@ -66,11 +65,11 @@ export default class Card {
     cardImage.alt = this._name;
     cardTitle.textContent = this._name;
 
-    const likeButton = this._cardElement.querySelector(".card__like-button");
+    this._likeButton = this._cardElement.querySelector(".card__like-button");
     if (this._isLiked) {
-      likeButton.classList.add("card__like-button_active");
+      this._likeButton.classList.add("card__like-button_active");
     } else {
-      likeButton.classList.remove("card__like-button_active");
+      this._likeButton.classList.remove("card__like-button_active");
     }
 
     this._setEventListeners();

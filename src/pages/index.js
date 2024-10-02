@@ -124,7 +124,7 @@ const profilePopup = new PopupWithForm("#edit-profile-modal", (formData) => {
         name: updatedData.name,
         about: updatedData.about,
       });
-      addCardValidator.disableSubmitButton();
+      editFormValidator.disableSubmitButton();
       profilePopup.close();
     })
     .catch((error) => {
@@ -166,7 +166,7 @@ const avatarPopup = new PopupWithForm("#edit-avatar-modal", (formData) => {
     .updateAvatar(avatarUrl)
     .then((avatarData) => {
       userInfo.setUserAvatar(avatarData);
-      addCardValidator.disableSubmitButton();
+      editAvatarValidator.disableSubmitButton();
       avatarPopup.close();
     })
     .catch((err) => {

@@ -48,8 +48,7 @@ export default class Api {
       headers: this.headers,
       body: JSON.stringify(cardData),
     })
-      .then((response) => response.json())
-      .then(this._handleRequests);
+      .then(this._handleRequest);
   }
 
   //DELETE the card
