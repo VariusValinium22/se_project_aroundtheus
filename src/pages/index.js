@@ -227,9 +227,9 @@ function handleDeleteClick(card) {
 function handleLikeClick(card) {
   console.log("isLiked initially before it is changed: ", card._isLiked);
   // if card !isLiked removeLike
-  if (!card.isLiked) {
+  if (!card.getIsLiked()) {
     api
-      .addLike(card._id)
+      .addLike(card.getId())
       .then(() => {
         card.handleLikeIcon();
         console.log(
@@ -243,7 +243,7 @@ function handleLikeClick(card) {
     // else removeLike to card
   } else {
     api
-      .removeLike(card._id)
+      .removeLike(card.getId())
       .then(() => {
         card.handleLikeIcon();
         console.log(
