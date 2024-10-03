@@ -22,7 +22,6 @@ export default class Card {
       .querySelector(".card__like-button")
       .addEventListener("click", () => {
         this._handleLikeClick(this);
-        // this.handleLikeIcon();
       });
 
     //card__delete-button

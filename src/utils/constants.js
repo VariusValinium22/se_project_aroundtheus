@@ -7,7 +7,7 @@ export const deleteCardModal = document.querySelector("#delete-card-modal");
 export const previewImageModal = document.querySelector("#preview-image-modal");
 
 export const profileFormElement = document.querySelector("#edit-profile-form");
-export const addCardFormElement = document.querySelector("#add-card-modal");
+export const addCardFormElement = document.querySelector("#add-card-form");
 export const avatarFormElement = document.querySelector("#edit-avatar-modal");
 
 export const closeButtons = document.querySelectorAll(".modal__close");

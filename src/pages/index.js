@@ -95,6 +95,7 @@ newCardPopup.setEventListeners();
 
 addNewCardButton.addEventListener("click", () => {
   newCardPopup.open();
+  addCardFormElement.reset();
 });
 
 //=========================
@@ -224,25 +225,34 @@ function handleDeleteClick(card) {
 //=== removeLike/addLike to card ===
 //==================================
 function handleLikeClick(card) {
-  // if card isLiked removeLike
-  if (card.isLiked) {
-    api
-      .removeLike(card._id)
-      .then(() => {
-        card.handleLikeIcon();
-      })
-      .catch((error) => {
-        console.error("Error removing like: ", error);
-      });
-    // else addLike to card
-  } else {
+  console.log("isLiked initially before it is changed: ", card._isLiked);
+  // if card !isLiked removeLike
+  if (!card.isLiked) {
     api
       .addLike(card._id)
       .then(() => {
         card.handleLikeIcon();
+        console.log(
+          "isLiked Updated, logged AFTER the API Call: ",
+          card._isLiked
+        );
       })
       .catch((error) => {
         console.error("Error adding like: ", error);
+      });
+    // else removeLike to card
+  } else {
+    api
+      .removeLike(card._id)
+      .then(() => {
+        card.handleLikeIcon();
+        console.log(
+          "isLiked Updated, logged AFTER the API Call: ",
+          card._isLiked
+        );
+      })
+      .catch((error) => {
+        console.error("Error removing like: ", error);
       });
   }
 }
