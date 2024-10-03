@@ -79,8 +79,12 @@ const newCardPopup = new PopupWithForm("#add-card-modal", (formData) => {
   api
     .addNewCard(cardData)
     .then((createdCard) => {
+      console.log(createdCard);
       cardList.addItem(createCard(createdCard));
       addCardValidator.disableSubmitButton();
+      addCardFormElement.reset();
+      // I just added this text to see if my deployment is working
+      console.log(createdCard);
       newCardPopup.close();
     })
     .catch((error) => {
@@ -95,7 +99,6 @@ newCardPopup.setEventListeners();
 
 addNewCardButton.addEventListener("click", () => {
   newCardPopup.open();
-  addCardFormElement.reset();
 });
 
 //=========================
