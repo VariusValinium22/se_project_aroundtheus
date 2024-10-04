@@ -79,12 +79,9 @@ const newCardPopup = new PopupWithForm("#add-card-modal", (formData) => {
   api
     .addNewCard(cardData)
     .then((createdCard) => {
-      console.log(createdCard);
       cardList.addItem(createCard(createdCard));
       addCardValidator.disableSubmitButton();
       addCardFormElement.reset();
-      // I just added this text to see if my deployment is working
-      console.log(createdCard);
       newCardPopup.close();
     })
     .catch((error) => {
@@ -228,17 +225,12 @@ function handleDeleteClick(card) {
 //=== removeLike/addLike to card ===
 //==================================
 function handleLikeClick(card) {
-  console.log("isLiked initially before it is changed: ", card._isLiked);
   // if card !isLiked removeLike
   if (!card.getIsLiked()) {
     api
       .addLike(card.getId())
       .then(() => {
         card.handleLikeIcon();
-        console.log(
-          "isLiked Updated, logged AFTER the API Call: ",
-          card._isLiked
-        );
       })
       .catch((error) => {
         console.error("Error adding like: ", error);
@@ -249,10 +241,6 @@ function handleLikeClick(card) {
       .removeLike(card.getId())
       .then(() => {
         card.handleLikeIcon();
-        console.log(
-          "isLiked Updated, logged AFTER the API Call: ",
-          card._isLiked
-        );
       })
       .catch((error) => {
         console.error("Error removing like: ", error);
