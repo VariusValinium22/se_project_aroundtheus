@@ -26,11 +26,18 @@
       </header>
       <main class="content">
         <section class="profile page__section">
-          <img
-            src="<%=require('./images/jacques-cousteau.jpg')%>"
-            alt="Avatar"
-            class="profile__image"
-          />
+          <div class="edit__avatar-controls">
+            <img
+              src="<%=require('./images/jacques-cousteau.jpg')%>"
+              alt="Avatar"
+              class="avatar__image"
+            />
+            <button
+              class="avatar__edit-button"
+              id="avatar__edit-button"
+              type="button"
+            ></button>
+          </div>
           <div class="profile__info">
             <h1 class="profile__title">Jacques Cousteau</h1>
             <button
@@ -55,8 +62,36 @@
       </footer>
     </div>
 
-    <!-- Edit Modal -->
-    <div class="modal" id="edit-modal">
+    <!--edit Avatar modal-->
+    <div class="modal" id="edit-avatar-modal">
+      <div class="modal__content">
+        <button class="modal__close" type="button"></button>
+        <p class="modal__title">New Place</p>
+        <form class="modal__form" id="edit-avatar-form">
+          <div class="modal__wrapper">
+            <input
+              type="url"
+              name="avatar"
+              class="modal__input modal__input_type_avatar"
+              placeholder="Avator"
+              id="profile-avatar-input"
+              required
+            />
+            <span class="modal__error" id="profile-avatar-input-error"></span>
+          </div>
+          <button
+            type="submit"
+            class="button modal__button modal__button_disabled"
+            disabled
+          >
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Profile Edit Modal -->
+    <div class="modal" id="edit-profile-modal">
       <div class="modal__content">
         <button class="modal__close" type="button"></button>
         <p class="modal__title">Edit profile</p>
@@ -151,6 +186,23 @@
       </div>
     </div>
 
+    <!--delete a card-->
+    <div class="modal" id="delete-card-modal">
+      <div class="modal__content modal__content_type_delete">
+        <button class="modal__close" type="button"></button>
+        <p class="modal__title">Are you sure?</p>
+        <form class="modal__form" id="delete-card-form">
+          <button
+            type="submit"
+            class="button modal__button modal__button_type_delete"
+          >
+            Yes
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!--card-template-->
     <template id="card-template">
       <li class="card">
         <div class="card__image-container">

@@ -1,0 +1,26 @@
+.avatar__edit-button {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  /*
+    top: 40%;
+    left: 40%; */
+  background: rgba(0, 0, 0, 0.6) url(../images/edit-icon.svg) center no-repeat;
+  /* height: 26px;
+    width: 26px; */
+  border: 1px solid white;
+  transition: transform 0.3s ease, opacity 0.75s ease;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.avatar__edit-button:hover {
+  opacity: 1;
+}
+
+.edit__avatar-controls {
+  position: relative;
+  display: inline-block;
+}
