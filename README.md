@@ -4,6 +4,8 @@
 
 **Intro**
 
+TESTING IF I SEE THIS CHANGE IN GITHUB
+
 This is a Project that allows a user to create a custom profile and upload pictures to that profile to build a personal photo collection. They can add images, enter their name and give a user description. It was built with modals windows and client-side form validation behavior to improve the user's experience.
 
 **Assignment Features Learned**
@@ -39,3 +41,6 @@ https://1drv.ms/u/s!ArfmgfuwQ_SagbUTJCU5tPFqOWLBhQ?e=3mhwhN
 
 **Github Pages Link**
 https://variusvalinium22.github.io/se_project_aroundtheus/
+
+**Youtube Presentation**
+https://youtu.be/491eE-DKBCA 
