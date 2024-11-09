@@ -88,7 +88,10 @@
   line-height: 17px;
 }
 
-.modal__form input[type="text"] {
+.modal__input_type_name,
+.modal__input_type_description,
+.modal__input_type_title,
+.modal__input_type_url {
   position: relative;
   width: 100%;
   padding: 0;
