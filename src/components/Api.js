@@ -3,7 +3,7 @@ export default class Api {
     this.baseUrl = baseUrl;
     this.headers = headers;
   }
-
+ 
   // GET-LOAD the user's info and img from the server
   getUserInfo() {
     return fetch(`${this.baseUrl}/users/me`, {
